@@ -1,0 +1,4 @@
+https://www.bilibili.com/read/readlist/rl758108
+请看这个专栏地址
+这里面的源码除了smbios.c和smbios.h可以直接文件替换
+其他你都要参考着修改而不是直接替换
