@@ -121,7 +121,7 @@ Linux pve 6.8.12-1-pve #1 SMP PREEMPT_DYNAMIC PMX 6.8.12-1 (2024-08-05T16:17Z) x
 
 nano /etc/pve/qemu-server/100.conf
 
-我的完整虚拟机配置如下:
+我的完整虚拟机配置如下(rdtscp=off可以直接删除以免影响性能):
 
 args: -cpu host,rdtscp=off,hypervisor=off,vmware-cpuid-freq=false,enforce=false,host-phys-bits=true -smbios type=0 -smbios type=9 -smbios type=8 -smbios type=8
 
