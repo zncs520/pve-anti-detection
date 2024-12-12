@@ -8,5 +8,6 @@ cp ../smbios.c qemu/hw/smbios/smbios.c
 cd qemu
 chmod +x sedPatch-pve-qemu-kvm7-8-anti-dection.sh
 bash sedPatch-pve-qemu-kvm7-8-anti-dection.sh
+cd ..
 make clean
 make 
