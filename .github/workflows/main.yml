@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     env:
       TZ: Asia/Shanghai
     steps:
@@ -21,9 +21,9 @@ jobs:
       - name: Install base package
         run: |
           sudo apt update && sudo apt install build-* bc dosfstools iasl mtools nasm \
-          python3 qemu-utils uuid-dev xorriso -y
+          python3 python3-pexpect qemu-utils uuid-dev xorriso -y
 
-      # Step 3: 构建 deb文件
+      # Step 3: 构建 deb 文件
       - name: Build
         run: |
           bash build_pve_qemu.sh
@@ -34,7 +34,7 @@ jobs:
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: intel-igdrom
+          name: pve-qemu
           path: artifacts/*
 
       # Step 5: 获取当前时间
@@ -59,14 +59,14 @@ jobs:
           tag_name: ${{ format('v{0}', steps.current-time.outputs.formattedTime) }}
           release_name: ${{ format('build-{0}', steps.current-time.outputs.formattedTime) }}
           body: |
-            build pve qemu kvm deb
+            build pve qemu deb
           draft: false
           prerelease: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       # Step 8: 上传 deb 文件到 Release
-      - name: Upload each deb file to release
+      - name: Upload each ROM file to release
         run: |
           for file in ${GITHUB_WORKSPACE}/artifacts/*.deb; do
             echo "Uploading $file"
