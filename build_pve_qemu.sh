@@ -4,6 +4,7 @@ ls
 git clone git://git.proxmox.com/git/pve-qemu.git
 cd pve-qemu
 git submodule update --init
+ls
 : <<'EOF'
 apt install devscripts -y
 mk-build-deps --install -y
