@@ -9,6 +9,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-24.04
+    container: ghcr.io/chocrates/qemu-build:main
     env:
       TZ: Asia/Shanghai
     steps:
