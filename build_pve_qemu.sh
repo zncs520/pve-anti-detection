@@ -7,23 +7,13 @@ git submodule update --init
 ls
 cd qemu
 git submodule update --init
-ls
 cp ../../sedPatch-pve-qemu-kvm7-8-anti-dection.sh .
 chmod +x sedPatch-pve-qemu-kvm7-8-anti-dection.sh
 bash sedPatch-pve-qemu-kvm7-8-anti-dection.sh
 cp ../../smbios.h include/hw/firmware/smbios.h
 cp ../../smbios.c hw/smbios/smbios.c
-ls
-: <<'EOF'
-apt install devscripts -y
-mk-build-deps --install -y
-make
-make clean
-
-cd qemu
-
+cd ..
 cd ..
 apt install devscripts -y
 mk-build-deps --install -y
-make 
-EOF
+make
