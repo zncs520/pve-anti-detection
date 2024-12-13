@@ -3,10 +3,11 @@
 ls
 git clone git://git.proxmox.com/git/pve-qemu.git
 cd pve-qemu
+git submodule update --init
+: <<'EOF'
 apt install devscripts -y
 mk-build-deps --install -y
 make
-: <<'EOF'
 make clean
 cp ../sedPatch-pve-qemu-kvm7-8-anti-dection.sh qemu/
 cp ../smbios.h qemu/include/hw/firmware/smbios.h
