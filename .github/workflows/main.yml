@@ -58,7 +58,7 @@ jobs:
         uses: actions/create-release@v1
         with:
           tag_name: ${{ format('v{0}', steps.current-time.outputs.formattedTime) }}
-          release_name: ${{ format('build-{0}', steps.current-time.outputs.formattedTime) }}
+          release_name: ${{ format('v8.1.2-1-{0}', steps.current-time.outputs.formattedTime) }}
           body: |
             build pve qemu deb
           draft: false
@@ -67,7 +67,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       # Step 8: 上传 deb 文件到 Release
-      - name: Upload each ROM file to release
+      - name: Upload each deb file to release
         run: |
           for file in ${GITHUB_WORKSPACE}/artifacts/*.deb; do
             echo "Uploading $file"
