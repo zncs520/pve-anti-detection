@@ -5,17 +5,22 @@ git clone git://git.proxmox.com/git/pve-qemu.git
 cd pve-qemu
 git submodule update --init
 ls
+cd qemu
+ls
+cp ../../sedPatch-pve-qemu-kvm7-8-anti-dection.sh .
+chmod +x sedPatch-pve-qemu-kvm7-8-anti-dection.sh
+bash sedPatch-pve-qemu-kvm7-8-anti-dection.sh
+cp ../../smbios.h include/hw/firmware/smbios.h
+cp ../../smbios.c hw/smbios/smbios.c
+ls
 : <<'EOF'
 apt install devscripts -y
 mk-build-deps --install -y
 make
 make clean
-cp ../sedPatch-pve-qemu-kvm7-8-anti-dection.sh qemu/
-cp ../smbios.h qemu/include/hw/firmware/smbios.h
-cp ../smbios.c qemu/hw/smbios/smbios.c
+
 cd qemu
-chmod +x sedPatch-pve-qemu-kvm7-8-anti-dection.sh
-bash sedPatch-pve-qemu-kvm7-8-anti-dection.sh
+
 cd ..
 apt install devscripts -y
 mk-build-deps --install -y
