@@ -9,7 +9,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-24.04
-    container: ghcr.io/chocrates/qemu-build:main
+    container: ghcr.io/lixiaoliu666/pve-anti-detection:main
     env:
       TZ: Asia/Shanghai
     steps:
