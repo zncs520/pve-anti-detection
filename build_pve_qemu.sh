@@ -15,5 +15,5 @@ cp ../../smbios.c hw/smbios/smbios.c
 cd ..
 cd ..
 apt install devscripts -y
-mk-build-deps --install -y
+mk-build-deps --install
 make
