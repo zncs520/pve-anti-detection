@@ -3,10 +3,12 @@ sudo apt-get install libacl1-dev libaio-dev libattr1-dev libcap-ng-dev libcurl4-
 ls
 git clone git://git.proxmox.com/git/pve-qemu.git
 cd pve-qemu
-git submodule update --init
 ls
+apt install devscripts -y
+mk-build-deps --install
+make
+make clean
 cd qemu
-git submodule update --init
 cp ../../sedPatch-pve-qemu-kvm7-8-anti-dection.sh .
 chmod +x sedPatch-pve-qemu-kvm7-8-anti-dection.sh
 bash sedPatch-pve-qemu-kvm7-8-anti-dection.sh
@@ -16,3 +18,4 @@ cd ..
 apt install devscripts -y
 mk-build-deps --install
 make
+
