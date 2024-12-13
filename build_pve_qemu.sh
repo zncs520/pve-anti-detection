@@ -6,6 +6,7 @@ cd pve-qemu
 git submodule update --init
 ls
 cd qemu
+git submodule update --init
 ls
 cp ../../sedPatch-pve-qemu-kvm7-8-anti-dection.sh .
 chmod +x sedPatch-pve-qemu-kvm7-8-anti-dection.sh
