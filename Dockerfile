@@ -44,8 +44,8 @@ run apt-get install -y docutils-common fonts-font-awesome libacl1-dev libattr1-d
             libva2 libvirglrenderer-dev libvirglrenderer1 libvulkan1 libzstd-dev meson \
             ninja-build python-babel-localedata python3-alabaster python3-babel \
             python3-docutils python3-imagesize python3-jinja2 python3-markupsafe \
-            python3-packaging python3-pip-whl python3-pygments python3-roman \
-            python3-setuptools python3-setuptools-whl python3-snowballstemmer \
+            python3-packaging python3-pip python3-pygments python3-roman \
+            python3-setuptools python3-snowballstemmer \
             python3-sphinx python3-sphinx-rtd-theme python3-tz python3-venv \
-            python3.11-venv sphinx-common sphinx-rtd-theme-common
+            python3.9-venv sphinx-common sphinx-rtd-theme-common
 #run apt-get install -y dpatch dh-systemd pve-libspice-server-dev iproute python-ceph libreadline-gplv2-dev libipset3 python-pyparsing ttf-dejavu-core
