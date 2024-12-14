@@ -1,12 +1,12 @@
-from debian:12
+from debian:11
 
 run apt-get update && \
     apt-get install -y wget
 # 增加Proxmox 的源文件
-run echo "deb https://mirrors.ustc.edu.cn/proxmox/debian/pve bookworm pve-no-subscription" > /etc/apt/sources.list.d/pve-no-subscription.list
+run echo "deb https://mirrors.ustc.edu.cn/proxmox/debian/pve $VERSION_CODENAME pve-no-subscription" > /etc/apt/sources.list.d/pve-no-subscription.list
 # 增加 ceph 源文件 换源
-run echo "deb https://mirrors.ustc.edu.cn/proxmox/debian/ceph-quincy bookworm no-subscription" > /etc/apt/sources.list.d/ceph.list
-run wget -O /etc/apt/trusted.gpg.d/proxmox-release-bookworm.gpg "https://enterprise.proxmox.com/debian/proxmox-release-bookworm.gpg"
+run echo "deb https://mirrors.ustc.edu.cn/proxmox/debian/ceph-quincy $VERSION_CODENAME no-subscription" > /etc/apt/sources.list.d/ceph.list
+run wget -O /etc/apt/trusted.gpg.d/proxmox-release-$VERSION_CODENAME.gpg "https://enterprise.proxmox.com/debian/proxmox-release-$VERSION_CODENAME.gpg"
 
 run apt-get update && apt-get dist-upgrade -y
 run apt-get install -y devscripts autotools-dev autogen dh-autoreconf dkms doxygen check pkg-config \
