@@ -4,7 +4,7 @@ ls
 df -h
 git clone git://git.proxmox.com/git/pve-qemu.git
 cd pve-qemu
-git reset --hard 67cae45f41449517b7d7418e159f2519b55009ff
+git reset --hard 09723b9298d39ba3016d877459e548c13378a6c2
 git submodule update --init
 ls
 cd qemu
