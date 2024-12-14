@@ -58,7 +58,7 @@ jobs:
         uses: actions/create-release@v1
         with:
           tag_name: ${{ format('v{0}', steps.current-time.outputs.formattedTime) }}
-          release_name: v7.2.0.4
+          release_name: v7.2.0.3
           body: |
             build pve qemu deb
           draft: false
