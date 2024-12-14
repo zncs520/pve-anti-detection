@@ -9,7 +9,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-24.04
-    container: ghcr.io/lixiaoliu666/pve-anti-detection:main
+    container: ghcr.io/lixiaoliu666/pve8docker:main
     env:
       TZ: Asia/Shanghai
     steps:
