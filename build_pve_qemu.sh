@@ -7,7 +7,6 @@ cd pve-qemu
 git reset --hard 1807330a6fa79c37bb5e6330cee5d49de05579c0
 apt install devscripts -y
 mk-build-deps --install
-make
 <<EOF
 git submodule update --init
 ls
