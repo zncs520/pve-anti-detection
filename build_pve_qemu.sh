@@ -4,7 +4,7 @@ ls
 df -h
 git clone git://git.proxmox.com/git/pve-qemu.git
 cd pve-qemu
-git reset --hard 16b7dfe03b3b39a95396ee68c8748e2156544cc3
+git reset --hard bb80c7f323c56abeba28a8ade73dedb3440f9c3a
 apt install devscripts -y
 mk-build-deps --install
 make
