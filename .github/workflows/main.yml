@@ -9,7 +9,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-24.04
-    container: ghcr.io/lixiaoliu666/pve7docker:main
+    container: ghcr.io/lixiaoliu666/pve8docker:main
     env:
       TZ: Asia/Shanghai
     steps:
@@ -58,9 +58,9 @@ jobs:
         uses: actions/create-release@v1
         with:
           tag_name: ${{ format('v{0}', steps.current-time.outputs.formattedTime) }}
-          release_name: v7.0.0.2
+          release_name: v8.1.2.1
           body: |
-            build pve qemu deb
+            build pve qemu deb form v7.0.0-1 to v9.x
           draft: false
           prerelease: false
         env:
