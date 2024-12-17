@@ -120,10 +120,10 @@ struct smbios_type_0 {
     uint8_t embedded_controller_minor_release;
 } QEMU_PACKED;
 
-/* UUID encoding. The time_* fields are little-endian, as specified by SMBIOS
+/*  encoding. The time_* fields are little-endian, as specified by SMBIOS
  * version 2.6.
  */
-struct smbios_uuid {
+struct smbios_ {
     uint32_t time_low;
     uint16_t time_mid;
     uint16_t time_hi_and_version;
@@ -139,7 +139,7 @@ struct smbios_type_1 {
     uint8_t product_name_str;
     uint8_t version_str;
     uint8_t serial_number_str;
-    struct smbios_uuid uuid;
+    struct smbios_ ;
     uint8_t wake_up_type;
     uint8_t sku_number_str;
     uint8_t family_str;
@@ -322,8 +322,8 @@ struct smbios_type_41 {
 } QEMU_PACKED;
 
 
-/* SMBIOS type 7 CacheInformation CPU»º´æĞÅÏ¢ 123¼¶cpu»º´æ ÀîÏşÁ÷ dds666 added */
-//https://www.dmtf.org/sites/default/files/standards/documents/DSP0134_3.8.0WIP50.pdf ÇëÊ¹ÓÃÕâ¸ö¹æ·¶ÎÄ¼şSystem Management BIOS (SMBIOS) Reference SpecificationÉèÖÃtype 7 ÄÚ²¿²ÎÊıĞÅÏ¢
+/* SMBIOS type 7 CacheInformation CPUç¼“å­˜ä¿¡æ¯ 123çº§cpuç¼“å­˜ ææ™“æµ dds666 added */
+//https://www.dmtf.org/sites/default/files/standards/documents/DSP0134_3.8.0WIP50.pdf è¯·ä½¿ç”¨è¿™ä¸ªè§„èŒƒæ–‡ä»¶System Management BIOS (SMBIOS) Reference Specificationè®¾ç½®type 7 å†…éƒ¨å‚æ•°ä¿¡æ¯
 struct smbios_type_7 {
     struct smbios_structure_header header;
 	uint8_t socket_designation;
@@ -338,8 +338,8 @@ struct smbios_type_7 {
 	uint8_t associativity;
 } QEMU_PACKED;
 
-/* SMBIOS type 20 MemoryDeviceMappedAddress ÄÚ´æÉè±¸Ó³ÉäµØÖ·ĞÅÏ¢ ÀîÏşÁ÷ dds666 added */
-//https://www.dmtf.org/sites/default/files/standards/documents/DSP0134_3.8.0WIP50.pdf ÇëÊ¹ÓÃÕâ¸ö¹æ·¶ÎÄ¼şSystem Management BIOS (SMBIOS) Reference SpecificationÉèÖÃtype 20 ÄÚ²¿²ÎÊıĞÅÏ¢
+/* SMBIOS type 20 MemoryDeviceMappedAddress å†…å­˜è®¾å¤‡æ˜ å°„åœ°å€ä¿¡æ¯ ææ™“æµ dds666 added */
+//https://www.dmtf.org/sites/default/files/standards/documents/DSP0134_3.8.0WIP50.pdf è¯·ä½¿ç”¨è¿™ä¸ªè§„èŒƒæ–‡ä»¶System Management BIOS (SMBIOS) Reference Specificationè®¾ç½®type 20 å†…éƒ¨å‚æ•°ä¿¡æ¯
 struct smbios_type_20 {
     struct smbios_structure_header header;
 	uint32_t starting_address;
@@ -351,8 +351,8 @@ struct smbios_type_20 {
 	uint8_t interleave_data_depth;
 } QEMU_PACKED;
 
-/* SMBIOS type 26 VoltageProbe µçÑ¹´«¸ĞÆ÷Éè±¸ĞÅÏ¢ ÀîÏşÁ÷ dds666 added*/
-//https://www.dmtf.org/sites/default/files/standards/documents/DSP0134_3.8.0WIP50.pdf ÇëÊ¹ÓÃÕâ¸ö¹æ·¶ÎÄ¼şSystem Management BIOS (SMBIOS) Reference SpecificationÉèÖÃtype 26 ÄÚ²¿²ÎÊıĞÅÏ¢
+/* SMBIOS type 26 VoltageProbe ç”µå‹ä¼ æ„Ÿå™¨è®¾å¤‡ä¿¡æ¯ ææ™“æµ dds666 added*/
+//https://www.dmtf.org/sites/default/files/standards/documents/DSP0134_3.8.0WIP50.pdf è¯·ä½¿ç”¨è¿™ä¸ªè§„èŒƒæ–‡ä»¶System Management BIOS (SMBIOS) Reference Specificationè®¾ç½®type 26 å†…éƒ¨å‚æ•°ä¿¡æ¯
 struct smbios_type_26 {
     struct smbios_structure_header header;
 	uint8_t description;
@@ -367,8 +367,8 @@ struct smbios_type_26 {
 	
 } QEMU_PACKED;
 
-/* SMBIOS type 27 CoolingDevice ·çÉÈÉè±¸ĞÅÏ¢ ÀîÏşÁ÷ dds666 added*/
-//https://www.dmtf.org/sites/default/files/standards/documents/DSP0134_3.8.0WIP50.pdf ÇëÊ¹ÓÃÕâ¸ö¹æ·¶ÎÄ¼şSystem Management BIOS (SMBIOS) Reference SpecificationÉèÖÃtype 27 ÄÚ²¿²ÎÊıĞÅÏ¢
+/* SMBIOS type 27 CoolingDevice é£æ‰‡è®¾å¤‡ä¿¡æ¯ ææ™“æµ dds666 added*/
+//https://www.dmtf.org/sites/default/files/standards/documents/DSP0134_3.8.0WIP50.pdf è¯·ä½¿ç”¨è¿™ä¸ªè§„èŒƒæ–‡ä»¶System Management BIOS (SMBIOS) Reference Specificationè®¾ç½®type 27 å†…éƒ¨å‚æ•°ä¿¡æ¯
 struct smbios_type_27 {
     struct smbios_structure_header header;
 	uint16_t temperature_probe_handle;
@@ -379,8 +379,8 @@ struct smbios_type_27 {
 	uint8_t description;
 } QEMU_PACKED;
 
-/* SMBIOS type 28 TemperatureProbe ÎÂ¶ÈÉè±¸ĞÅÏ¢ ÀîÏşÁ÷ dds666 added*/
-//https://www.dmtf.org/sites/default/files/standards/documents/DSP0134_3.8.0WIP50.pdf ÇëÊ¹ÓÃÕâ¸ö¹æ·¶ÎÄ¼şSystem Management BIOS (SMBIOS) Reference SpecificationÉèÖÃtype 28 ÄÚ²¿²ÎÊıĞÅÏ¢
+/* SMBIOS type 28 TemperatureProbe æ¸©åº¦è®¾å¤‡ä¿¡æ¯ ææ™“æµ dds666 added*/
+//https://www.dmtf.org/sites/default/files/standards/documents/DSP0134_3.8.0WIP50.pdf è¯·ä½¿ç”¨è¿™ä¸ªè§„èŒƒæ–‡ä»¶System Management BIOS (SMBIOS) Reference Specificationè®¾ç½®type 28 å†…éƒ¨å‚æ•°ä¿¡æ¯
 struct smbios_type_28 {
     struct smbios_structure_header header;
 	uint8_t description;
@@ -395,28 +395,28 @@ struct smbios_type_28 {
 } QEMU_PACKED;
 
 
-/* SMBIOS type 37 MemoryChannel ÄÚ´æÍ¨µÀĞÅÏ¢£¨Õâ¸öÃ»ÓĞĞ´Íê£© ÀîÏşÁ÷ dds666 added*/
-//https://www.dmtf.org/sites/default/files/standards/documents/DSP0134_3.8.0WIP50.pdf ÇëÊ¹ÓÃÕâ¸ö¹æ·¶ÎÄ¼şSystem Management BIOS (SMBIOS) Reference SpecificationÉèÖÃtype 37 ÄÚ²¿²ÎÊıĞÅÏ¢
+/* SMBIOS type 37 MemoryChannel å†…å­˜é€šé“ä¿¡æ¯ï¼ˆè¿™ä¸ªæ²¡æœ‰å†™å®Œï¼‰ ææ™“æµ dds666 added*/
+//https://www.dmtf.org/sites/default/files/standards/documents/DSP0134_3.8.0WIP50.pdf è¯·ä½¿ç”¨è¿™ä¸ªè§„èŒƒæ–‡ä»¶System Management BIOS (SMBIOS) Reference Specificationè®¾ç½®type 37 å†…éƒ¨å‚æ•°ä¿¡æ¯
 struct smbios_type_37 {
     struct smbios_structure_header header;
 } QEMU_PACKED;
 
-/* SMBIOS type 29 ElectricalCurrentProbe £¨Õâ¸öÃ»ÓĞĞ´Íê£© ÀîÏşÁ÷ dds666 added*/
-//https://www.dmtf.org/sites/default/files/standards/documents/DSP0134_3.8.0WIP50.pdf ÇëÊ¹ÓÃÕâ¸ö¹æ·¶ÎÄ¼şSystem Management BIOS (SMBIOS) Reference SpecificationÉèÖÃtype 29 ÄÚ²¿²ÎÊıĞÅÏ¢
+/* SMBIOS type 29 ElectricalCurrentProbe ï¼ˆè¿™ä¸ªæ²¡æœ‰å†™å®Œï¼‰ ææ™“æµ dds666 added*/
+//https://www.dmtf.org/sites/default/files/standards/documents/DSP0134_3.8.0WIP50.pdf è¯·ä½¿ç”¨è¿™ä¸ªè§„èŒƒæ–‡ä»¶System Management BIOS (SMBIOS) Reference Specificationè®¾ç½®type 29 å†…éƒ¨å‚æ•°ä¿¡æ¯
 struct smbios_type_29 {
     struct smbios_structure_header header;
 	uint8_t description;
 } QEMU_PACKED;
 
-/* SMBIOS type 39 SystemPowerSupply £¨Õâ¸öÃ»ÓĞĞ´Íê£© ÀîÏşÁ÷ dds666 added*/
-//https://www.dmtf.org/sites/default/files/standards/documents/DSP0134_3.8.0WIP50.pdf ÇëÊ¹ÓÃÕâ¸ö¹æ·¶ÎÄ¼şSystem Management BIOS (SMBIOS) Reference SpecificationÉèÖÃtype 39 ÄÚ²¿²ÎÊıĞÅÏ¢
+/* SMBIOS type 39 SystemPowerSupply ï¼ˆè¿™ä¸ªæ²¡æœ‰å†™å®Œï¼‰ ææ™“æµ dds666 added*/
+//https://www.dmtf.org/sites/default/files/standards/documents/DSP0134_3.8.0WIP50.pdf è¯·ä½¿ç”¨è¿™ä¸ªè§„èŒƒæ–‡ä»¶System Management BIOS (SMBIOS) Reference Specificationè®¾ç½®type 39 å†…éƒ¨å‚æ•°ä¿¡æ¯
 struct smbios_type_39 {
     struct smbios_structure_header header;
 	uint8_t device_name;
 } QEMU_PACKED;
 
-/* SMBIOS type 22 PortableBattery £¨Õâ¸öÃ»ÓĞĞ´Íê£© ÀîÏşÁ÷ dds666 added*/
-//https://www.dmtf.org/sites/default/files/standards/documents/DSP0134_3.8.0WIP50.pdf ÇëÊ¹ÓÃÕâ¸ö¹æ·¶ÎÄ¼şSystem Management BIOS (SMBIOS) Reference SpecificationÉèÖÃtype 22 ÄÚ²¿²ÎÊıĞÅÏ¢
+/* SMBIOS type 22 PortableBattery ï¼ˆè¿™ä¸ªæ²¡æœ‰å†™å®Œï¼‰ ææ™“æµ dds666 added*/
+//https://www.dmtf.org/sites/default/files/standards/documents/DSP0134_3.8.0WIP50.pdf è¯·ä½¿ç”¨è¿™ä¸ªè§„èŒƒæ–‡ä»¶System Management BIOS (SMBIOS) Reference Specificationè®¾ç½®type 22 å†…éƒ¨å‚æ•°ä¿¡æ¯
 struct smbios_type_22 {
     struct smbios_structure_header header;
 	uint8_t device_name;
@@ -432,8 +432,7 @@ void smbios_add_usr_blob_size(size_t size);
 void smbios_entry_add(QemuOpts *opts, Error **errp);
 void smbios_set_cpuid(uint32_t version, uint32_t features);
 void smbios_set_defaults(const char *manufacturer, const char *product,
-                         const char *version,
-                         bool uuid_encoded);
+                         const char *version);
 void smbios_set_default_processor_family(uint16_t processor_family);
 uint8_t *smbios_get_table_legacy(size_t *length, Error **errp);
 void smbios_get_tables(MachineState *ms,
