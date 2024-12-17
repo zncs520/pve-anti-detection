@@ -1178,7 +1178,6 @@ void smbios_set_defaults(const char *manufacturer, const char *product,
                          const char *version)
 {
     smbios_have_defaults = true;
-    smbios_uuid_encoded = uuid_encoded;
 
     SMBIOS_SET_DEFAULT(smbios_type1.manufacturer, "Maxsun"); //李晓流 dds666 modify
     SMBIOS_SET_DEFAULT(smbios_type1.product, "MS-Terminator B760M"); //李晓流 dds666 modify
