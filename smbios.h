@@ -139,7 +139,7 @@ struct smbios_type_1 {
     uint8_t product_name_str;
     uint8_t version_str;
     uint8_t serial_number_str;
-    struct smbios_ ;
+    struct smbios_uuid uuid;
     uint8_t wake_up_type;
     uint8_t sku_number_str;
     uint8_t family_str;
