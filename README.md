@@ -57,6 +57,12 @@ dpkg -i pve-edk2-firmware-ovmf_4.2023.08-4_all_anti_detection20240830v5.0.deb
 
 reboot
 
+如果你要恢复官方包只需要运行下面两个命令就行
+
+apt reinstall 
+
+apt reinstall 
+
 5、新建虚拟机
 
 虚拟机使用ovmf+q35（推荐q35）或者ovmf+i440fx，配置中注意硬盘一定选择sata硬盘（至少128g，50g 80g等大小太不像物理机硬盘大小，别对硬盘大小太抠抠扣扣搜搜了，scsi及virtio硬盘光驱网卡设备等避开使用），ide或者sata光驱，显示先选择标准（弄好后再直通独显核显vgpu等），cpu选择host（1插槽多核心这点一定注意），网卡选择e1000显卡（注意网卡mac地址问题，免得检测虚拟机），避开各种virtio设备（scsi硬盘scsi光驱等），并修改虚拟机的args参数和我一样。内存请使用8192 16384 4096这三个数值（更加像物理机内存大小），对应8g 16g 4g，其他大小请勿设置（太假太像虚拟机）。
