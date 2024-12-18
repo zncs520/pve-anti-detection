@@ -135,3 +135,5 @@ args: -cpu host,hypervisor=off,vmware-cpuid-freq=false,enforce=false,host-phys-b
 
 该文章中开源内容外的内容全部开源，将在这个系列全部公布: 
 https://www.bilibili.com/read/readlist/rl758108 pve反虚拟化检测玩游戏
+
+本项目抛砖引玉，欢迎fork本项目后自我继续折腾！！！
