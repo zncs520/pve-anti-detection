@@ -31,9 +31,7 @@ jobs:
           sudo bash build_pve_qemu.sh
           mkdir -p artifacts
           find ./ -name "*.deb" -exec cp {} ./artifacts/ \;
-          cd ./artifacts/
-          rm *build*
-          rm *dbgsym*
+          
 
       # Step 4: 上传工件
       - name: Upload artifacts
@@ -55,6 +53,9 @@ jobs:
         run: |
           echo "Listing files in artifacts directory:"
           ls -l artifacts/
+          cd artifacts
+          rm *build*
+          rm *dbgsym*
 
       # Step 7: 创建 GitHub Release
       - name: Create GitHub Releases
