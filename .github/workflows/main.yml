@@ -29,6 +29,8 @@ jobs:
       - name: Build
         run: |
           sudo bash build_pve_qemu.sh
+          rm *build*.deb
+          rm *dbgsym*.deb
           mkdir -p artifacts
           find ./ -name "*.deb" -exec cp {} ./artifacts/ \;
 
