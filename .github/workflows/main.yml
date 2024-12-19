@@ -29,10 +29,11 @@ jobs:
       - name: Build
         run: |
           sudo bash build_pve_qemu.sh
-          rm *build*.deb
-          rm *dbgsym*.deb
           mkdir -p artifacts
           find ./ -name "*.deb" -exec cp {} ./artifacts/ \;
+          cd ./artifacts/
+          rm *build*
+          rm *dbgsym*
 
       # Step 4: 上传工件
       - name: Upload artifacts
