@@ -125,11 +125,11 @@ vmgenid: 2271babc-cafc-4c68-be8b-2bb3157c9924
 
 args: -cpu host,hypervisor=off,vmware-cpuid-freq=false,enforce=false,host-phys-bits=true -smbios type=0,vendor="American Megatrends International LLC.",version=H3.7G,date='02/21/2023',release=3.7 -smbios type=1,manufacturer="Maxsun",product="MS-Terminator B760M",version="VER:H3.7G(2022/11/29)",serial="Default string",sku="Default string",family="Default string" -smbios type=2,manufacturer="Maxsun",product="MS-Terminator B760M",version="VER:H3.7G(2022/11/29)",serial="Default string",asset="Default string",location="Default string" -smbios type=3,manufacturer="Default string",version="Default string",serial="Default string",asset="Default string",sku="Default string" -smbios type=17,loc_pfx="Controller0-ChannelA-DIMM",manufacturer="KINGSTON",speed=3200,serial=DF1EC466,part="SED3200U1888S",bank="BANK 0",asset="9876543210" -smbios type=4,sock_pfx="LGA1700",manufacturer="Intel(R) Corporation",version="12th Gen Intel(R) Core(TM) i7-12700",max-speed=4900,current-speed=3800,serial="To Be Filled By O.E.M.",asset="To Be Filled By O.E.M.",part="To Be Filled By O.E.M." -smbios type=8,internal_reference="CPU FAN",external_reference="Not Specified",connector_type=0xFF,port_type=0xFF -smbios type=8,internal_reference="J3C1 - GMCH FAN",external_reference="Not Specified",connector_type=0xFF,port_type=0xFF -smbios type=8,internal_reference="J2F1 - LAI FAN",external_reference="Not Specified",connector_type=0xFF,port_type=0xFF -smbios type=11,value="Default string"
 
-6、其他内容详见 目前过不了的检测说明.txt（详见本项目tools目录)，这个是高级检测，以前的虚拟机检测工具.rar
+6、其他内容详见 目前过不了的检测说明.txt（详见本项目tools目录)。以前我发过的虚拟机检测工具.rar
 
-（详见qq群 102166071，进群暗号pve，qq群 25438194 进群暗号 666，这个检测我认为是很初级的 ）
+（详见qq群 102166071，进群暗号pve，qq群 25438194 进群暗号 666），我认为是很初级的。
 
-你也可以试试。高级检测还得是al-khaser 另外增加了一个pafish64.exe检测软件。pafish和al-khaser是虚拟机环境检测的两个金标准。
+你也可以试试高级检测，高级检测还得是al-khaser和pafish64.exe检测软件。pafish和al-khaser是虚拟机环境检测的两个金标准。
 
 7、https://www.bilibili.com/read/cv26245305 
 
