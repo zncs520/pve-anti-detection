@@ -44,7 +44,7 @@ object: ROOT#vdrvroot#0000#{2e34d650-5819-42ca-84ae-d30803bae505}
 [*] Checking RDTSC which force a VM Exit (cpuid)                                                 这个要打内核补丁，使用定制的内核或者kvm内核模块，目前能通过了
 
 
-整体来说，pafish和al-khaser目前只有三个检测过不了：
+整体来说，pafish和al-khaser目前只有2个检测过不了：
 1、Checking Local Descriptor Table location  这个我试了好几个物理机也过不了
 2、Checking ThermalZoneInfo performance counters with WMI 这个我试了好几个物理机也过不了，我物理机没这个功能，我估计要写一堆acpi，太麻烦了
 
