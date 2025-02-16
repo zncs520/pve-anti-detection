@@ -76,6 +76,7 @@ sed -i 's/QEMU MPT Fusion/ASUS MPT Fusion/g' hw/scsi/mptconfig.c
 sed -i 's/"QEMU"/"ASUS"/g' hw/scsi/mptconfig.c
 sed -i 's/0000111122223333/1145141919810000/g' hw/scsi/mptconfig.c
 sed -i 's/"QEMU/"ASUS/g' hw/scsi/scsi-bus.c
+sed -i 's/"QEMU/"ASUS/g' hw/scsi/megasas.c
 sed -i 's/"QEMU/"ASUS/g' hw/scsi/scsi-disk.c
 sed -i 's/"QEMU/"ASUS/g' hw/scsi/spapr_vscsi.c
 sed -i 's/"QEMU/"ASUS/g' hw/usb/dev-audio.c
