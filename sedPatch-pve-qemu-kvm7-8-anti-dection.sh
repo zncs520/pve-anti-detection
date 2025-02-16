@@ -63,6 +63,7 @@ sed -i 's/QEMU M68K Virtual Machine/ASUS M68K Real Machine/g' hw/m68k/virt.c
 sed -i 's/"QEMU/"ASUS/g' hw/misc/pvpanic-isa.c
 sed -i 's/"QEMU/"ASUS/g' hw/nvme/ctrl.c
 sed -i 's/0x51454d5520434647ULL/0x4155535520434647ULL/g' hw/nvram/fw_cfg.c
+sed -i 's/"QEMU/"ASUS/g' hw/nvram/fw_cfg-acpi.c
 sed -i 's/"QEMU/"ASUS/g' hw/pci-host/gpex.c
 sed -i 's/"QEMU/"ASUS/g' hw/ppc/e500plat.c
 sed -i 's/qemu-e500/asus-e500/g' hw/ppc/e500plat.c
