@@ -68,6 +68,9 @@ sed -i 's/"QEMU/"ASUS/g' hw/pci-host/gpex.c
 sed -i 's/"QEMU/"ASUS/g' hw/ppc/prep.c
 sed -i 's/"QEMU/"ASUS/g' hw/ppc/e500plat.c
 sed -i 's/qemu-e500/asus-e500/g' hw/ppc/e500plat.c
+sed -i 's/"QEMU Virtual/"ASUS/g' hw/riscv/virt.c
+sed -i 's/"KVM Virtual/"ASUS/g' hw/riscv/virt.c
+sed -i 's/"QEMU/"ASUS/g' hw/riscv/virt.c
 sed -i 's/s16s8s16s16s16/s11s4s51s41s91/g' hw/scsi/mptconfig.c
 sed -i 's/QEMU MPT Fusion/ASUS MPT Fusion/g' hw/scsi/mptconfig.c
 sed -i 's/"QEMU"/"ASUS"/g' hw/scsi/mptconfig.c
