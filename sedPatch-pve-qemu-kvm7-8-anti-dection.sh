@@ -11,6 +11,7 @@ sed -i 's/QEMU vhost-user-gpu/ASUS vhost-user-gpu/g' contrib/vhost-user-gpu/vhos
 sed -i 's/desc->oem_id/ACPI_BUILD_APPNAME6/g' hw/acpi/aml-build.c
 sed -i 's/desc->oem_table_id/ACPI_BUILD_APPNAME8/g' hw/acpi/aml-build.c
 sed -i 's/array, ACPI_BUILD_APPNAME8/array, "PTL "/g' hw/acpi/aml-build.c
+sed -i 's/"QEMU/"Intel/g' hw/acpi/aml-build.c
 
 grep "do this once" hw/acpi/vmgenid.c >/dev/null
 if [ $? -eq 0 ]; then
