@@ -79,6 +79,8 @@ sed -i 's/"QEMU/"ASUS/g' hw/scsi/scsi-bus.c
 sed -i 's/"QEMU/"ASUS/g' hw/scsi/megasas.c
 sed -i 's/"QEMU/"ASUS/g' hw/scsi/scsi-disk.c
 sed -i 's/"QEMU/"ASUS/g' hw/scsi/spapr_vscsi.c
+sed -i 's/"QEMU/"ASUS/g' hw/sd/sd.c
+sed -i 's/"QEMU/"ASUS/g' hw/ufs/lu.c
 sed -i 's/"QEMU/"ASUS/g' hw/usb/dev-audio.c
 sed -i 's/"QEMU/"ASUS/g' hw/usb/dev-hid.c
 sed -i 's/"QEMU/"ASUS/g' hw/usb/dev-hub.c
