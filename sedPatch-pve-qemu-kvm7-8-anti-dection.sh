@@ -41,6 +41,7 @@ else
 	sed -i '/create fw_cfg node/,/}/s/{/\/*{/g' hw/i386/acpi-build.c
 	echo "hw/i386/acpi-build.c 文件处理完成（第一次处理，只处理一次）"
 fi
+sed -i 's/"QEMU/"ASUS/g' hw/i386/fw_cfg.c
 sed -i 's/"QEMU Virtual CPU/"CPU/g' hw/i386/pc.c
 sed -i 's/"QEMU/"ASUS/g' hw/i386/pc_piix.c
 sed -i 's/Standard PC (i440FX + PIIX, 1996)/ASUS M4A88TD-Mi440fx/g' hw/i386/pc_piix.c
