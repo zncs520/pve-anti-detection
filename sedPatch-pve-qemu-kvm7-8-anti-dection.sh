@@ -49,7 +49,7 @@ sed -i 's/"QEMU/"ASUS/g' hw/i386/pc_q35.c
 sed -i 's/Standard PC (Q35 + ICH9, 2009)/ASUS M4A88TD-Mq35/g' hw/i386/pc_q35.c
 sed -i 's/mc->name, pcmc->smbios_legacy_mode,/"ASUS-PC", pcmc->smbios_legacy_mode,/g' hw/i386/pc_q35.c
 sed -i 's/"QEMU/"ASUS/g' hw/ide/atapi.c
-sed -i 's/"QEMU/"ASUS /g' hw/ide/core.c
+sed -i 's/"QEMU/"ASUS/g' hw/ide/core.c
 sed -i 's/QM%05d/ASUS%05d/g' hw/ide/core.c
 sed -i 's/"QEMU/"ASUS/g' hw/input/adb-kbd.c
 sed -i 's/"QEMU/"ASUS/g' hw/input/adb-mouse.c
