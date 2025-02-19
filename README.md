@@ -140,6 +140,6 @@ args: -cpu host,hypervisor=off,vmware-cpuid-freq=false,enforce=false,host-phys-b
 该文章中开源内容外的内容全部开源，将在这个系列全部公布: 
 https://www.bilibili.com/read/readlist/rl758108 pve反虚拟化检测玩游戏
 
-8、从8.1.5-6版本开始解决了n卡vgpu驱动43问题（感谢qq群友指出问题源码和测试，我自己就没用过n卡vgpu）
+8、本项目从8.1.5-6版本开始n卡vgpu驱动43问题没有了（感谢qq群友指出问题、源码和测试，我自己就没用过n卡vgpu）
 
 本项目抛砖引玉，欢迎fork本项目后自我继续折腾！！！
