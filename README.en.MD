@@ -34,7 +34,7 @@ For reference, you can check out my previous article: [https://www.bilibili.com/
 Download the following packages:
 
 - `pve-qemu-kvm_9.xxx_amd64.deb` (Replace `xxx` with the specific version you downloaded)
-- `pve-edk2-firmware-ovmf_4.2023.08-4_all_anti_detection20240830v5.0.deb`
+- `pve-edk2-firmware-ovmf_4.202xxx_all_anti_detection202xxx.deb`
 
 Upload them to `/root` using **WinSCP**.
 
@@ -53,7 +53,7 @@ For version **9.x**, install with:
 
 ```bash
 dpkg -i pve-qemu-kvm_9.xxx_amd64.deb
-dpkg -i pve-edk2-firmware-ovmf_4.2023.08-4_all_anti_detection20240830v5.0.deb
+dpkg -i pve-edk2-firmware-ovmf_4.202xxx_all_anti_detection202xxx.deb
 ```
 
 If your QEMU version is outdated, update your system and install the latest version:
@@ -62,7 +62,7 @@ If your QEMU version is outdated, update your system and install the latest vers
 apt update
 apt install pve-qemu-kvm
 dpkg -i pve-qemu-kvm_9.xxx_amd64.deb
-dpkg -i pve-edk2-firmware-ovmf_4.2023.08-4_all_anti_detection20240830v5.0.deb
+dpkg -i pve-edk2-firmware-ovmf_4.202xxx_all_anti_detection202xxx.deb
 ```
 
 ### Reboot After Installation
