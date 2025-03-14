@@ -27,7 +27,7 @@ pve网页 数据中心-》选项-》MAC地址前缀你先改成D8:FC:93
 
 pve-qemu-kvm_9.xxx_amd64.deb  本项目下载  xxx代表你具体下载的版本
 
-pve-edk2-firmware-ovmf_4.2023.08-4_all_anti_detection20240830v5.0.deb 本项目下载
+pve-edk2-firmware-ovmf_4.202xxx_all_anti_detection202xxx.deb 本项目下载
 
 请用winscp 上传到/root目录下
 
@@ -41,7 +41,7 @@ dpkg -l|grep pve-qemu-kvm
 
 dpkg -i pve-qemu-kvm_9.xxx_amd64.deb  xxx代表你具体下载的版本
 
-dpkg -i pve-edk2-firmware-ovmf_4.2023.08-4_all_anti_detection20240830v5.0.deb
+dpkg -i pve-edk2-firmware-ovmf_4.202xxx_all_anti_detection202xxx.deb
 
 
 如果qemu版本不是最新的，你升级下系统并安装本项目下载的最新包，命令如下:
@@ -52,7 +52,7 @@ apt install pve-qemu-kvm
 
 dpkg -i pve-qemu-kvm_9.xxx_amd64.deb xxx代表你具体下载的版本
 
-dpkg -i pve-edk2-firmware-ovmf_4.2023.08-4_all_anti_detection20240830v5.0.deb
+dpkg -i pve-edk2-firmware-ovmf_4.202xxx_all_anti_detection202xxx.deb
 
 
 安装完成后请reboot机器
