@@ -131,7 +131,7 @@ args: -cpu host,hypervisor=off,vmware-cpuid-freq=false,enforce=false,host-phys-b
 
 6、其他内容详见 目前过不了的检测说明.txt（详见本项目tools目录)。以前我发过的虚拟机检测工具.rar
 
-（详见qq群 102166071，进群暗号pve，qq群 25438194 进群暗号 666），我认为是很初级的。
+（详见qq群 25438194 进群暗号 666），我认为是很初级的。
 
 你也可以试试高级检测，高级检测还得是al-khaser和pafish64.exe检测软件。pafish和al-khaser是虚拟机环境检测的两个金标准。
 
