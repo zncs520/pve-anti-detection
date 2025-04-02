@@ -34,7 +34,7 @@ For reference, you can check out my previous article: [https://www.bilibili.com/
 Download the following packages:
 
 - `pve-qemu-kvm_9.xxx_amd64.deb` (Replace `xxx` with the specific version you downloaded)
-- `pve-edk2-firmware-ovmf_4.202xxx_all_anti_detection202xxx.deb`
+- `pve-edk2-firmware-ovmf_4.202xxx_all_anti_detection202xxx.deb` you can also download from https://github.com/lixiaoliu666/pve-anti-detection-edk2-firmware-ovmf
 
 Upload them to `/root` using **WinSCP**.
 
