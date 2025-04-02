@@ -30,7 +30,8 @@ jobs:
         run: |
           sudo bash build_pve_qemu.sh
           mkdir -p artifacts
-          find ./ -name "*.deb" -or -name "*.patch" -exec cp {} ./artifacts/ \;
+          find ./ -name "*.deb" -exec cp {} ./artifacts/ \;
+          cp qemu-autogenpatch.patch ./artifacts/ \;
           
 
       # Step 4: 上传工件
