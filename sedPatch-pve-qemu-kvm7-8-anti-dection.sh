@@ -2,12 +2,13 @@
 #适用于给pve-qemu-kvm9里面的qemu打补丁使用，只支持9版本(不支持kvm7和kvm8，再高没有测试)，直接放本脚本在qemu目录下，在make包之前在qemu目录运行一次本脚本就是，运行后你可以继续使用git工具生成qemu具体版本的patch文件
 #参考开源项目 https://github.com/zhaodice/proxmox-ve-anti-detection 编写，处理重复劳作
 #作者 李晓流 & 大大帅666 20240824出品 https://space.bilibili.com/565938745
+brand="DELL"
 echo "开始sed工作"
-sed -i 's/QEMU v" QEMU_VERSION/ASUS v" QEMU_VERSION/g' block/vhdx.c
-sed -i 's/QEMU VVFAT", 10/ASUS VVFAT", 10/g' block/vvfat.c
-sed -i 's/QEMU Microsoft Mouse/ASUS Microsoft Mouse/g' chardev/msmouse.c
-sed -i 's/QEMU Wacom Pen Tablet/ASUS Wacom Pen Tablet/g' chardev/wctablet.c
-sed -i 's/QEMU vhost-user-gpu/ASUS vhost-user-gpu/g' contrib/vhost-user-gpu/vhost-user-gpu.c
+sed -i 's/QEMU v" QEMU_VERSION/'${brand}' v" QEMU_VERSION/g' block/vhdx.c
+sed -i 's/QEMU VVFAT", 10/'${brand}' VVFAT", 10/g' block/vvfat.c
+sed -i 's/QEMU Microsoft Mouse/'${brand}' Microsoft Mouse/g' chardev/msmouse.c
+sed -i 's/QEMU Wacom Pen Tablet/'${brand}' Wacom Pen Tablet/g' chardev/wctablet.c
+sed -i 's/QEMU vhost-user-gpu/'${brand}' vhost-user-gpu/g' contrib/vhost-user-gpu/vhost-user-gpu.c
 sed -i 's/desc->oem_id/ACPI_BUILD_APPNAME6/g' hw/acpi/aml-build.c
 sed -i 's/desc->oem_table_id/ACPI_BUILD_APPNAME8/g' hw/acpi/aml-build.c
 sed -i 's/array, ACPI_BUILD_APPNAME8/array, "PTL "/g' hw/acpi/aml-build.c
@@ -21,15 +22,15 @@ else
 	echo "hw/acpi/vmgenid.c 文件处理完成（第一次处理，只处理一次）"
 fi
 sed -i 's/"QEMUQEQEMUQEMU/"ASUSASASUSASUS/g' hw/acpi/core.c
-sed -i 's/"QEMU/"ASUS/g' hw/acpi/core.c
-sed -i 's/QEMU N800/ASUS N800/g' hw/arm/nseries.c
-sed -i 's/QEMU LCD panel/ASUS LCD panel/g' hw/arm/nseries.c
-sed -i 's/strcpy((void *) w, "QEMU ")/strcpy((void *) w, "ASUS ")/g' hw/arm/nseries.c
+sed -i 's/"QEMU/"'${brand}'/g' hw/acpi/core.c
+sed -i 's/QEMU N800/'${brand}' N800/g' hw/arm/nseries.c
+sed -i 's/QEMU LCD panel/'${brand}' LCD panel/g' hw/arm/nseries.c
+sed -i 's/strcpy((void *) w, "QEMU ")/strcpy((void *) w, "'${brand}' ")/g' hw/arm/nseries.c
 sed -i 's/"1.1.10-qemu" : "1.1.6-qemu"/"1.1.10-asus" : "1.1.6-asus"/g' hw/arm/nseries.c
-sed -i "s/QEMU 'SBSA Reference' ARM Virtual Machine/ASUS 'SBSA Reference' ARM Real Machine/g" hw/arm/sbsa-ref.c
-sed -i 's/QEMU Sun Mouse/ASUS Sun Mouse/g' hw/char/escc.c
+sed -i "s/QEMU 'SBSA Reference' ARM Virtual Machine/"${brand}" 'SBSA Reference' ARM Real Machine/g" hw/arm/sbsa-ref.c
+sed -i 's/QEMU Sun Mouse/'${brand}' Sun Mouse/g' hw/char/escc.c
 sed -i 's/info->vendor = "RHT"/info->vendor = "DEL"/g' hw/display/edid-generate.c
-sed -i 's/QEMU Monitor/DELL Monitor/g' hw/display/edid-generate.c
+sed -i 's/QEMU Monitor/'${brand}' Monitor/g' hw/display/edid-generate.c
 sed -i 's/uint16_t model_nr = 0x1234;/uint16_t model_nr = 0xA05F;/g' hw/display/edid-generate.c
 
 grep "do this once" hw/i386/acpi-build.c >/dev/null
@@ -41,77 +42,77 @@ else
 	sed -i '/create fw_cfg node/,/}/s/{/\/*{/g' hw/i386/acpi-build.c
 	echo "hw/i386/acpi-build.c 文件处理完成（第一次处理，只处理一次）"
 fi
-sed -i 's/"QEMU/"ASUS/g' hw/i386/fw_cfg.c
+sed -i 's/"QEMU/"'${brand}'/g' hw/i386/fw_cfg.c
 sed -i 's/"QEMU Virtual CPU/"CPU/g' hw/i386/pc.c
-sed -i 's/"QEMU/"ASUS/g' hw/i386/pc_piix.c
-sed -i 's/Standard PC (i440FX + PIIX, 1996)/ASUS M4A88TD-Mi440fx/g' hw/i386/pc_piix.c
-sed -i 's/"QEMU/"ASUS/g' hw/i386/pc_q35.c
-sed -i 's/Standard PC (Q35 + ICH9, 2009)/ASUS M4A88TD-Mq35/g' hw/i386/pc_q35.c
-sed -i 's/mc->name, pcmc->smbios_legacy_mode,/"ASUS-PC", pcmc->smbios_legacy_mode,/g' hw/i386/pc_q35.c
-sed -i 's/"QEMU/"ASUS/g' hw/ide/atapi.c
-sed -i 's/"QEMU/"ASUS/g' hw/ide/core.c
-sed -i 's/QM%05d/ASUS%05d/g' hw/ide/core.c
-sed -i 's/"QEMU/"ASUS/g' hw/input/adb-kbd.c
-sed -i 's/"QEMU/"ASUS/g' hw/input/adb-mouse.c
-sed -i 's/"QEMU/"ASUS/g' hw/input/ads7846.c
-sed -i 's/"QEMU/"ASUS/g' hw/input/hid.c
-sed -i 's/"QEMU/"ASUS/g' hw/input/ps2.c
-sed -i 's/"QEMU/"ASUS/g' hw/input/tsc2005.c
-sed -i 's/"QEMU/"ASUS/g' hw/input/tsc210x.c
-sed -i 's/"QEMU Virtio/"ASUS/g' hw/input/virtio-input-hid.c
-sed -i 's/QEMU M68K Virtual Machine/ASUS M68K Real Machine/g' hw/m68k/virt.c
-sed -i 's/"QEMU/"ASUS/g' hw/misc/pvpanic-isa.c
-sed -i 's/"QEMU/"ASUS/g' hw/nvme/ctrl.c
+sed -i 's/"QEMU/"'${brand}'/g' hw/i386/pc_piix.c
+sed -i 's/Standard PC (i440FX + PIIX, 1996)/'${brand}' M4A88TD-Mi440fx/g' hw/i386/pc_piix.c
+sed -i 's/"QEMU/"'${brand}'/g' hw/i386/pc_q35.c
+sed -i 's/Standard PC (Q35 + ICH9, 2009)/'${brand}' M4A88TD-Mq35/g' hw/i386/pc_q35.c
+sed -i 's/mc->name, pcmc->smbios_legacy_mode,/"'${brand}'-PC", pcmc->smbios_legacy_mode,/g' hw/i386/pc_q35.c
+sed -i 's/"QEMU/"'${brand}'/g' hw/ide/atapi.c
+sed -i 's/"QEMU/"'${brand}'/g' hw/ide/core.c
+sed -i 's/QM%05d/'${brand}'%05d/g' hw/ide/core.c
+sed -i 's/"QEMU/"'${brand}'/g' hw/input/adb-kbd.c
+sed -i 's/"QEMU/"'${brand}'/g' hw/input/adb-mouse.c
+sed -i 's/"QEMU/"'${brand}'/g' hw/input/ads7846.c
+sed -i 's/"QEMU/"'${brand}'/g' hw/input/hid.c
+sed -i 's/"QEMU/"'${brand}'/g' hw/input/ps2.c
+sed -i 's/"QEMU/"'${brand}'/g' hw/input/tsc2005.c
+sed -i 's/"QEMU/"'${brand}'/g' hw/input/tsc210x.c
+sed -i 's/"QEMU Virtio/"'${brand}'/g' hw/input/virtio-input-hid.c
+sed -i 's/QEMU M68K Virtual Machine/'${brand}' M68K Real Machine/g' hw/m68k/virt.c
+sed -i 's/"QEMU/"'${brand}'/g' hw/misc/pvpanic-isa.c
+sed -i 's/"QEMU/"'${brand}'/g' hw/nvme/ctrl.c
 sed -i 's/0x51454d5520434647ULL/0x4155535520434647ULL/g' hw/nvram/fw_cfg.c
-sed -i 's/"QEMU/"ASUS/g' hw/nvram/fw_cfg-acpi.c
-sed -i 's/"QEMU/"ASUS/g' hw/pci-host/gpex.c
-sed -i 's/"QEMU/"ASUS/g' hw/ppc/prep.c
-sed -i 's/"QEMU/"ASUS/g' hw/ppc/e500plat.c
+sed -i 's/"QEMU/"'${brand}'/g' hw/nvram/fw_cfg-acpi.c
+sed -i 's/"QEMU/"'${brand}'/g' hw/pci-host/gpex.c
+sed -i 's/"QEMU/"'${brand}'/g' hw/ppc/prep.c
+sed -i 's/"QEMU/"'${brand}'/g' hw/ppc/e500plat.c
 sed -i 's/qemu-e500/asus-e500/g' hw/ppc/e500plat.c
-sed -i 's/"QEMU Virtual/"ASUS/g' hw/riscv/virt.c
-sed -i 's/"KVM Virtual/"ASUS/g' hw/riscv/virt.c
-sed -i 's/"QEMU/"ASUS/g' hw/riscv/virt.c
+sed -i 's/"QEMU Virtual/"'${brand}'/g' hw/riscv/virt.c
+sed -i 's/"KVM Virtual/"'${brand}'/g' hw/riscv/virt.c
+sed -i 's/"QEMU/"'${brand}'/g' hw/riscv/virt.c
 sed -i 's/s16s8s16s16s16/s11s4s51s41s91/g' hw/scsi/mptconfig.c
-sed -i 's/QEMU MPT Fusion/ASUS MPT Fusion/g' hw/scsi/mptconfig.c
-sed -i 's/"QEMU"/"ASUS"/g' hw/scsi/mptconfig.c
+sed -i 's/QEMU MPT Fusion/'${brand}' MPT Fusion/g' hw/scsi/mptconfig.c
+sed -i 's/"QEMU"/"'${brand}'"/g' hw/scsi/mptconfig.c
 sed -i 's/0000111122223333/1145141919810000/g' hw/scsi/mptconfig.c
-sed -i 's/"QEMU/"ASUS/g' hw/scsi/scsi-bus.c
-sed -i 's/"QEMU/"ASUS/g' hw/scsi/megasas.c
-sed -i 's/"QEMU/"ASUS/g' hw/scsi/scsi-disk.c
-sed -i 's/"QEMU/"ASUS/g' hw/scsi/spapr_vscsi.c
-sed -i 's/"QEMU/"ASUS/g' hw/sd/sd.c
-sed -i 's/"QEMU/"ASUS/g' hw/ufs/lu.c
-sed -i 's/"QEMU/"ASUS/g' hw/usb/dev-audio.c
-sed -i 's/"QEMU/"ASUS/g' hw/usb/dev-hid.c
-sed -i 's/"QEMU/"ASUS/g' hw/usb/dev-hub.c
+sed -i 's/"QEMU/"'${brand}'/g' hw/scsi/scsi-bus.c
+sed -i 's/"QEMU/"'${brand}'/g' hw/scsi/megasas.c
+sed -i 's/"QEMU/"'${brand}'/g' hw/scsi/scsi-disk.c
+sed -i 's/"QEMU/"'${brand}'/g' hw/scsi/spapr_vscsi.c
+sed -i 's/"QEMU/"'${brand}'/g' hw/sd/sd.c
+sed -i 's/"QEMU/"'${brand}'/g' hw/ufs/lu.c
+sed -i 's/"QEMU/"'${brand}'/g' hw/usb/dev-audio.c
+sed -i 's/"QEMU/"'${brand}'/g' hw/usb/dev-hid.c
+sed -i 's/"QEMU/"'${brand}'/g' hw/usb/dev-hub.c
 sed -i 's/314159/114514/g' hw/usb/dev-hub.c
-sed -i 's/"QEMU/"ASUS/g' hw/usb/dev-mtp.c
-sed -i 's/"QEMU/"ASUS/g' hw/usb/dev-network.c
-sed -i 's/"RNDIS\/QEMU/"RNDIS\/ASUS/g' hw/usb/dev-network.c
+sed -i 's/"QEMU/"'${brand}'/g' hw/usb/dev-mtp.c
+sed -i 's/"QEMU/"'${brand}'/g' hw/usb/dev-network.c
+sed -i 's/"RNDIS\/QEMU/"RNDIS\/'${brand}'/g' hw/usb/dev-network.c
 sed -i 's/400102030405/400114514405/g' hw/usb/dev-network.c
 sed -i 's/s->vendorid = 0x1234/s->vendorid = 0x8086/g' hw/usb/dev-network.c
-sed -i 's/"QEMU/"ASUS/g' hw/usb/dev-serial.c
-sed -i 's/"QEMU/"ASUS/g' hw/usb/dev-smartcard-reader.c
-sed -i 's/"QEMU/"ASUS/g' hw/usb/dev-storage.c
-sed -i 's/"QEMU/"ASUS/g' hw/usb/dev-uas.c
+sed -i 's/"QEMU/"'${brand}'/g' hw/usb/dev-serial.c
+sed -i 's/"QEMU/"'${brand}'/g' hw/usb/dev-smartcard-reader.c
+sed -i 's/"QEMU/"'${brand}'/g' hw/usb/dev-storage.c
+sed -i 's/"QEMU/"'${brand}'/g' hw/usb/dev-uas.c
 sed -i 's/27842/33121/g' hw/usb/dev-uas.c
-sed -i 's/"QEMU/"ASUS/g' hw/usb/dev-wacom.c
-sed -i 's/"QEMU/"ASUS/g' hw/usb/u2f-emulated.c
-sed -i 's/"QEMU/"ASUS/g' hw/usb/u2f-passthru.c
-sed -i 's/"QEMU/"ASUS/g' hw/usb/u2f.c
+sed -i 's/"QEMU/"'${brand}'/g' hw/usb/dev-wacom.c
+sed -i 's/"QEMU/"'${brand}'/g' hw/usb/u2f-emulated.c
+sed -i 's/"QEMU/"'${brand}'/g' hw/usb/u2f-passthru.c
+sed -i 's/"QEMU/"'${brand}'/g' hw/usb/u2f.c
 sed -i 's/"BOCHS/"INTEL/g' include/hw/acpi/aml-build.h
 sed -i 's/"BXPC/"PC8086/g' include/hw/acpi/aml-build.h
-sed -i 's/"QEMU0002/"ASUS0002/g' include/standard-headers/linux/qemu_fw_cfg.h
+sed -i 's/"QEMU0002/"'${brand}'0002/g' include/standard-headers/linux/qemu_fw_cfg.h
 sed -i 's/0x51454d5520434647ULL/0x4155535520434647ULL/g' include/standard-headers/linux/qemu_fw_cfg.h
-sed -i 's/"QEMU/"ASUS/g' migration/migration.c
-sed -i 's/"QEMU/"ASUS/g' migration/rdma.c
+sed -i 's/"QEMU/"'${brand}'/g' migration/migration.c
+sed -i 's/"QEMU/"'${brand}'/g' migration/rdma.c
 sed -i 's/0x51454d5520434647ULL/0x4155535520434647ULL/g' pc-bios/optionrom/optionrom.h
-sed -i 's/"QEMU/"ASUS/g' pc-bios/s390-ccw/virtio-scsi.h
-sed -i 's/"QEMU/"ASUS/g' roms/seabios/src/fw/ssdt-misc.dsl
-sed -i 's/"QEMU/"ASUS/g' roms/seabios-hppa/src/fw/ssdt-misc.dsl
+sed -i 's/"QEMU/"'${brand}'/g' pc-bios/s390-ccw/virtio-scsi.h
+sed -i 's/"QEMU/"'${brand}'/g' roms/seabios/src/fw/ssdt-misc.dsl
+sed -i 's/"QEMU/"'${brand}'/g' roms/seabios-hppa/src/fw/ssdt-misc.dsl
 sed -i 's/KVMKVMKVM\\0\\0\\0/GenuineIntel/g' target/i386/kvm/kvm.c
 sed -i 's/QEMUQEMUQEMUQEMU/ASUSASUSASUSASUS/g' target/s390x/tcg/misc_helper.c
-sed -i 's/"QEMU/"ASUS/g' target/s390x/tcg/misc_helper.c
+sed -i 's/"QEMU/"'${brand}'/g' target/s390x/tcg/misc_helper.c
 sed -i 's/"KVM/"ATX/g' target/s390x/tcg/misc_helper.c
 sed -i 's/t->bios_characteristics_extension_bytes\[1\] = 0x14;/t->bios_characteristics_extension_bytes\[1\] = 0x0F;/g' hw/smbios/smbios.c
 sed -i 's/t->voltage = 0;/t->voltage = 0x8B;/g' hw/smbios/smbios.c
