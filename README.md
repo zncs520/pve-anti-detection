@@ -27,7 +27,7 @@ pve网页 数据中心-》选项-》MAC地址前缀你先改成D8:FC:93
 
 pve-qemu-kvm_9.xxx_amd64.deb  本项目下载  xxx代表你具体下载的版本
 
-pve-edk2-firmware-ovmf_4.202xxx_all_anti_detection202xxx.deb 本项目下载
+pve-edk2-firmware-ovmf_4.202xxx_all_anti_detection202xxx.deb 本项目下载 ，也可以这个项目进行下载 https://github.com/lixiaoliu666/pve-anti-detection-edk2-firmware-ovmf
 
 请用winscp 上传到/root目录下
 
