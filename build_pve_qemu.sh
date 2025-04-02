@@ -16,6 +16,8 @@ chmod +x sedPatch-pve-qemu-kvm7-8-anti-dection.sh
 bash sedPatch-pve-qemu-kvm7-8-anti-dection.sh
 cp ../../smbios.h include/hw/firmware/smbios.h
 cp ../../smbios.c hw/smbios/smbios.c
+git diff > qemu-autopatch.patch
+cp qemu-autopatch.patch ../
 cd ..
 apt install devscripts -y
 mk-build-deps --install
