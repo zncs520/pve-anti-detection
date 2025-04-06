@@ -63,7 +63,7 @@ reboot
 
 apt reinstall pve-qemu-kvm
 
-#如果reinstall失败或者不成功可以执行这个命令强制重装指定版本  apt install pve-qemu-kvm=9.0.2-2
+#如果reinstall失败或者不成功可以执行这个命令强制重装指定版本  apt install pve-qemu-kvm=9.0.2-2 或者 apt reinstall pve-qemu-kvm=9.0.2-2
 
 apt reinstall pve-edk2-firmware-ovmf
 
