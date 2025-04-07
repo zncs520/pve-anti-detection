@@ -2,6 +2,8 @@
 
 **Authors:** Li Xiaoliu & DadaShuai666
 
+Chat QQ Groups `25438194` with entry codes `666`
+
 - **Li Xiaolius Bilibili:** [https://space.bilibili.com/565938745](https://space.bilibili.com/565938745)
 - **DadaShuai666s Bilibili:** [https://space.bilibili.com/14205798](https://space.bilibili.com/14205798)
 
@@ -129,7 +131,7 @@ args: -cpu host,hypervisor=off,vmware-cpuid-freq=false,enforce=false,host-phys-b
 
 - **For detection bypassing tools**, refer to `Currently Undetected Checks.txt` in the `tools` directory.
 - **Recommended Detection Tools:**
-  - **Basic:** [Virtual Machine Detection Tool](#) (Check QQ Groups `25438194` with entry codes `666`)
+  - **Basic:** [Virtual Machine Detection Tool](#) 
   - **Advanced:** [`pafish64.exe`](#) and [`al-khaser`](#) are the gold standards for VM detection.
 
 ## 5. Further Reading
