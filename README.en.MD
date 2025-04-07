@@ -129,7 +129,8 @@ args: -cpu host,hypervisor=off,vmware-cpuid-freq=false,enforce=false,host-phys-b
 
 ## 4. Additional Notes
 
-- **For detection bypassing tools **in the `tools` directory.refer to `Currently Undetected Checks.txt` 
+- **For detection bypassing tools ** in the `tools` directory
+refer to `Currently Undetected Checks.txt` 
 - **Recommended Detection Tools:**
   - **Basic:** [Virtual Machine Detection Tool](#) 
   - **Advanced:** [`pafish64.exe`](#) and [`al-khaser`](#) are the gold standards for VM detection.
