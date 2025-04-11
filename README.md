@@ -139,3 +139,4 @@ args: -cpu host,hypervisor=off,vmware-cpuid-freq=false,enforce=false,host-phys-b
 https://www.bilibili.com/read/readlist/rl758108 pve反虚拟化检测玩游戏
 
 本项目抛砖引玉，欢迎fork本项目后自我继续折腾！！！
+[![Star History Chart](https://api.star-history.com/svg?repos=lixiaoliu666/pve-anti-detection&type=Date)](https://star-history.com/#lixiaoliu666/pve-anti-detection&Date)
