@@ -141,3 +141,6 @@ This project is open-source. All content outside of proprietary parts will be fu
 🔗 [PVE Anti-Virtualization Detection for Gaming](https://www.bilibili.com/read/readlist/rl758108)
 
 We welcome forks and further experimentation!
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=lixiaoliu666/pve-anti-detection&type=Date)](https://www.star-history.com/#lixiaoliu666/pve-anti-detection&Date)
