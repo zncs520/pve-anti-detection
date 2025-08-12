@@ -8,10 +8,9 @@ cd pve-qemu
 git reset --hard 839b53bab89fddb7a7fb3a1d722e05df932cce4e
 apt install devscripts -y
 mk-build-deps --install
-git submodule update --init
+git submodule update --init --recursive
 cp ../sedPatch-pve-qemu-kvm7-8-anti-dection.sh qemu/
 cd qemu
-git submodule update --init --recursive --force
 chmod +x sedPatch-pve-qemu-kvm7-8-anti-dection.sh
 bash sedPatch-pve-qemu-kvm7-8-anti-dection.sh
 cp ../../smbios.h include/hw/firmware/smbios.h
