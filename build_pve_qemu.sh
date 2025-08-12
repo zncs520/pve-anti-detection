@@ -6,10 +6,9 @@ df -h
 git clone git://git.proxmox.com/git/pve-qemu.git
 cd pve-qemu
 git reset --hard 839b53bab89fddb7a7fb3a1d722e05df932cce4e
+git submodule update --init --recursive --force
 apt install devscripts -y
 mk-build-deps --install
-make
-make clean
 cp ../sedPatch-pve-qemu-kvm7-8-anti-dection.sh qemu/
 cd qemu
 chmod +x sedPatch-pve-qemu-kvm7-8-anti-dection.sh
@@ -20,8 +19,6 @@ sed -i 's/!object_dynamic_cast/object_dynamic_cast/g' hw/vfio/igd.c
 git diff > qemu-autoGenPatch.patch
 cp qemu-autoGenPatch.patch ../
 cd ..
-apt install devscripts -y
-mk-build-deps --install
 make
 cd qemu/
 git checkout .
