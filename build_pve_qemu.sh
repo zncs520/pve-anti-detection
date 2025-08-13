@@ -11,6 +11,8 @@ mk-build-deps --install
 git submodule update --init --recursive
 cp ../sedPatch-pve-qemu-kvm7-8-anti-dection.sh qemu/
 cd qemu
+git submodule update --init --recursive
+meson subprojects download
 chmod +x sedPatch-pve-qemu-kvm7-8-anti-dection.sh
 bash sedPatch-pve-qemu-kvm7-8-anti-dection.sh
 cp ../../smbios.h include/hw/firmware/smbios.h
