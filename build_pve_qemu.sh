@@ -20,7 +20,7 @@ sed -i 's/!object_dynamic_cast/object_dynamic_cast/g' hw/vfio/igd.c
 git diff > qemu-autoGenPatch.patch
 cp qemu-autoGenPatch.patch ../
 cd ..
-make
+make #改为一次编译
 cd qemu/
 git checkout .
 cd ..
