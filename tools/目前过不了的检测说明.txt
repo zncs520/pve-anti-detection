@@ -19,7 +19,7 @@
 [*] Checking Win32_VoltageProbe with WMI   电压探针                                                        wmic path Win32_VoltageProbe get *
 [*] Checking Win32_PortConnector with WMI                                                           wmic path Win32_PortConnector get *  
 [*] Checking Win32_SMBIOSMemory with WMI 					wmic path Win32_SMBIOSMemory get *
-[*] Checking ThermalZoneInfo performance counters with WMI                                         [ BAD  ] wmic path Win32_PerfFormattedData_Counters_ThermalZoneInformation get *  这个没有思路得
+[*] Checking ThermalZoneInfo performance counters with WMI                                         wmic path Win32_PerfFormattedData_Counters_ThermalZoneInformation get *  这个通过acpi加载ssdt解决
 [*] Checking CIM_Memory with WMI     物理内存                                                               wmic path CIM_Memory get *
 [*] Checking CIM_Sensor with WMI      传感器设备                                                              wmic path CIM_Sensor get *
 [*] Checking CIM_NumericSensor with WMI      数字传感器                                                      wmic path CIM_NumericSensor get *
@@ -44,9 +44,9 @@ object: ROOT#vdrvroot#0000#{2e34d650-5819-42ca-84ae-d30803bae505}
 [*] Checking RDTSC which force a VM Exit (cpuid)                                                 这个要打内核补丁，使用定制的内核或者kvm内核模块，目前能通过了
 
 
-整体来说，pafish和al-khaser目前只有2个检测过不了：
+整体来说，pafish和al-khaser目前只有1个检测过不了：
 1、Checking Local Descriptor Table location  这个我试了好几个物理机也过不了
-2、Checking ThermalZoneInfo performance counters with WMI 这个我试了好几个物理机也过不了，我物理机没这个功能，我估计要写一堆acpi，太麻烦了
 
 我个人的建议是直通sata硬盘或者m2硬盘给虚拟机，还有有线物理网卡（usb网卡）给虚拟机进行测试。
+
 
