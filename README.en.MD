@@ -98,7 +98,7 @@ apt reinstall pve-edk2-firmware-ovmf=4.2025.02-4
 ### Recommended Configuration
 
 - **BIOS:** OVMF + Q35 (Recommended) or OVMF + i440fx
-- **Storage:** SATA (at least 128GB; avoid SCSI and Virtio devices)
+- **Storage:** SATA (at least 128GB; avoid Virtio devices such as SCSI、virtioNET、virtioBlock、virtio-GPU..)
 - **CD Drive:** IDE or SATA
 - **Graphics:** Standard initially, then pass through dedicated GPU
 - **CPU:** `host` (1 socket, multiple cores)
