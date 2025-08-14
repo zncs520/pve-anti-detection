@@ -3,6 +3,9 @@ eax: 1
 ebx: 0
 ecx: 0
 edx: 64
+[CORE DEBUG] HYPER_X: returned from cache
+[DEBUG] HYPERVISOR_STR: strlen(out + 4)=12
+out+4: GenuineIntel
 1、[  DETECTED  ] Checking hypervisor str...     这个足够折腾了，物理机全部返回为0，看虚拟机怎么处理
 
 [CORE DEBUG] HYPER_X: returned from cache
@@ -30,10 +33,10 @@ edx: 64
 5、[  DETECTED  ] Checking firmware...
 
 [DEBUG] PCI_DEVICES: Found 886 devices 这个要慢慢检查
-[DEBUG] PCI_DEVICES: Detected Red Hat + Virtio device -> 452202496 这个避免0x1af4 0x1b36的设备就能解决
+[DEBUG] PCI_DEVICES: Detected Red Hat + Virtio device -> 452202496 =1af41000 这个避免0x1af4 0x1b36的设备就能解决
 6、[  DETECTED  ] Checking PCI vendor/device ID...
 
-[CORE DEBUG] HYPER_X: returned from cache Checking hypervisor str这个解决了这个就解决了
+[CORE DEBUG] HYPER_X: returned from cache                Checking hypervisor str这个检测解决了这个也就解决了
 7、[  DETECTED  ] Checking hypervisor interception...
 
 
