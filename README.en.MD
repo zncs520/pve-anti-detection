@@ -1,3 +1,5 @@
+Language [<a href="README.md">中文</a>] | [<a href="README.en.MD">English</a>] Thanks for https://github.com/mk990 translate.
+
 # Li Xiaoliu & DadaShuai666 Project
 
 **Authors:** Li Xiaoliu & DadaShuai666
@@ -35,7 +37,7 @@ For reference, you can check out my previous article: [https://www.bilibili.com/
 
 Download the following packages and file:
 
-- `pve-qemu-kvm_9.xxx_amd64.deb` (Replace `xxx` with the specific version you downloaded)
+- `pve-qemu-kvm_10.xxx_amd64.deb` (Replace `xxx` with the specific version you downloaded)
 - `pve-edk2-firmware-ovmf_xxx.deb` you can also download from https://github.com/lixiaoliu666/pve-anti-detection-edk2-firmware-ovmf
 - `ssdt.aml` ssdt.aml==ssdt.dat you can edit ssdt.aml with https://github.com/ic005k/Xiasl
 
@@ -77,8 +79,8 @@ reboot
 ### Restore Official Packages (If Needed)
 
 ```bash
-apt reinstall pve-qemu-kvm
-apt reinstall pve-edk2-firmware-ovmf
+apt reinstall pve-qemu-kvm or apt reinstall pve-qemu-kvm=10.0.2-4
+apt reinstall pve-edk2-firmware-ovmf or apt reinstall pve-edk2-firmware-ovmf=4.2025.02-4
 ```
 
 ## 3. Creating a Virtual Machine
