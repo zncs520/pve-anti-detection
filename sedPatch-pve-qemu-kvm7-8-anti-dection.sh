@@ -148,6 +148,7 @@ sed -i 's/0x1af4/0x8086/g' hw/audio/hda-codec.c # QEMU_HDA_ID_VENDOR  0x1af4 =ic
 sed -i 's/rev = 3/rev = 4/g' hw/i386/acpi-build.c # Most VMs use an older-style FADT of length 244  bytes (revision  3), cutting off before the Sleep Control/Status registers and Hypervisor ID
 sed -i 's/lat = 0xfff/lat = 0x1fff/g' hw/i386/acpi-build.c  # A value > 100 indicates the system does not support a C2/C3 state
 sed -i 's/"WAET"/"WWWT"/g' hw/i386/acpi-build.c # "WAET" is also present as a string inside the WAET table, so there's no need to check for its table signature
+sed -i 's/rev = 1/rev = 2/g' hw/i386/acpi-build.c # 全部升级最低为2
 sed -i 's/0x0627/0x6666/g' hw/input/virtio-input-hid.c # 0x0627=QEMU tablet
 sed -i 's/0x0627/0x6666/g' hw/usb/dev-hid.c # 0x0627=QEMU tablet
 echo "结束sed工作"
