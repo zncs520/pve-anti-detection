@@ -3,7 +3,7 @@ eax: 1
 ebx: 0
 ecx: 0
 edx: 64
-1、[  DETECTED  ] Checking hypervisor str...     这个足够折腾了，目前没思路
+1、[  DETECTED  ] Checking hypervisor str...     这个足够折腾了，物理机全部返回为0，看虚拟机怎么处理
 
 [CORE DEBUG] HYPER_X: returned from cache
 [DEBUG] CPUID: max hypervisor leaf = 1073741825
@@ -28,7 +28,7 @@ edx: 64
 5、[  DETECTED  ] Checking firmware...
 
 [DEBUG] PCI_DEVICES: Found 886 devices 这个要慢慢检查
-[DEBUG] PCI_DEVICES: Detected Red Hat + Virtio device -> 452202496 这个也要慢慢检查
+[DEBUG] PCI_DEVICES: Detected Red Hat + Virtio device -> 452202496 这个避免0x1af4 0x1b36的设备就能解决
 6、[  DETECTED  ] Checking PCI vendor/device ID...
 
 [CORE DEBUG] HYPER_X: returned from cache Checking hypervisor str这个解决了这个就解决了
