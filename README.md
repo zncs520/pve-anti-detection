@@ -1,4 +1,4 @@
-Language [<a href="README.md">中文</a>] | [<a href="README.en.MD">English</a>] 
+Language [<a href="README.md">中文</a>] | [<a href="README.en.MD">English</a>] Thanks for https://github.com/mk990 translate。
 
 李晓流 & 大大帅666 作品
 
@@ -70,9 +70,9 @@ reboot
 
 apt reinstall pve-qemu-kvm
 
-#如果reinstall失败或者不成功可以执行这个命令强制重装指定版本  apt install pve-qemu-kvm=10.0.2-1 或者 apt reinstall pve-qemu-kvm=10.0.2-1
+#如果reinstall失败或者不成功可以执行这个命令强制重装指定版本  apt install pve-qemu-kvm=10.0.2-4 或者 apt reinstall pve-qemu-kvm=10.0.2-4
 
-apt reinstall pve-edk2-firmware-ovmf
+apt reinstall pve-edk2-firmware-ovmf 或者 apt reinstall pve-edk2-firmware-ovmf=4.2025.02-4
 
 5、新建虚拟机
 
@@ -147,5 +147,6 @@ https://www.bilibili.com/read/readlist/rl758108 pve反虚拟化检测玩游戏
 ## Star History
 
 [![Star History Chart](https://api.star-history.com/svg?repos=lixiaoliu666/pve-anti-detection&type=Date)](https://www.star-history.com/#lixiaoliu666/pve-anti-detection&Date)
+
 
 
