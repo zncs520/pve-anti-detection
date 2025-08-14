@@ -22,9 +22,11 @@ edx: 64
 4、[  DETECTED  ] Checking QEMU passthrough... 就这一个就检查出来是QEMU+KVM虚拟机 这个在后续版本中删除了这个检测，直接忽略
 
 [DEBUG] FIRMWARE: Not enough SSDT tables for a real system  这个要加载两个以上ssdt 比如 args: -acpitable file=/root/ssdt.aml -acpitable file=/root/ssdt-ec.aml
-[DEBUG] FIRMWARE: No _OSI params found 这个要在dsdt里面实现windows关键字的返回，这个在后续版本那种删除了这个检测代码段，直接忽略
+[DEBUG] FIRMWARE: No _OSI params found 这个要在dsdt里面实现windows关键字的返回，这个在后续版本删除了这个检测代码段，直接忽略
 [DEBUG] FIRMWARE: HPET table not found 这个加载 -acpitable file=/root/hept.aml 就可以解决
-[DEBUG] FIRMWARE: FACP indicates VM (rev 3), (length 244)  Most VMs use an older-style FADT of length 244  bytes (revision  3)  这个修改版本3为4处理
+[DEBUG] FIRMWARE: FACP indicates VM (rev 3), (length 244)  Most VMs use an older-style FADT of length 244  bytes (revision  3)  这个修改版本3为4处理，长度244以上没思路？？？
+[DEBUG] FIRMWARE: SSDT/DSDT revision indicates VM (rev 1)  修改ssdt和dsdt的版本为至少2
+
 5、[  DETECTED  ] Checking firmware...
 
 [DEBUG] PCI_DEVICES: Found 886 devices 这个要慢慢检查
@@ -57,6 +59,12 @@ VM detections: 7/96
     "HKLM\\SYSTEM\\CurrentControlSet\\Enum\\USB",
     "HKLM\\SYSTEM\\CurrentControlSet\\Enum\\HDAUDIO"
     注册表这三个地方，把0x1af4 0x1b36的设备全部删除干净(不知道怎么强制删除,删除总是报错)，删除不了需要重装win10系统
+    4、[  DETECTED  ] Checking GPU capabilities...
+    加显卡
+    5、[  DETECTED  ] Checking firmware...
+    除了FACP indicates VM (rev 3), (length 244)的244长度没弄出来
+    2、[  DETECTED  ] Checking timing anomalies...  这个有时候能过有时候不能过
+    
+
 
 20250814测试留存
-
