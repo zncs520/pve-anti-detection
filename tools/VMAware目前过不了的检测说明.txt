@@ -47,7 +47,14 @@ VM detections: 7/96
 除了pafish和al-khaser是虚拟机环境检测的两个金标准外，现在又有一个新的检测项目 https://github.com/kernelwernel/VMAware
 
 以上是VMAware检测出来的结果，7个过不了，目前解决了以下：
-3、[  DETECTED  ] Checking registry keys... 去注册表里面对照着删除就是
+
+    3、[  DETECTED  ] Checking registry keys... 
+    去注册表里面对照着删除就是
+    6、[  DETECTED  ] Checking PCI vendor/device ID... 
+    "HKLM\\SYSTEM\\CurrentControlSet\\Enum\\PCI",
+    "HKLM\\SYSTEM\\CurrentControlSet\\Enum\\USB",
+    "HKLM\\SYSTEM\\CurrentControlSet\\Enum\\HDAUDIO"
+    注册表这三个地方，要不0x1af4 0x1b36的设备全部删除干净(不知道怎么强制删除)，删除不了需要重装win10系统
 
 20250814测试留存
 
