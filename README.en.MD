@@ -79,8 +79,13 @@ reboot
 ### Restore Official Packages (If Needed)
 
 ```bash
-apt reinstall pve-qemu-kvm or apt reinstall pve-qemu-kvm=10.0.2-4
-apt reinstall pve-edk2-firmware-ovmf or apt reinstall pve-edk2-firmware-ovmf=4.2025.02-4
+apt reinstall pve-qemu-kvm 
+or
+apt reinstall pve-qemu-kvm=10.0.2-4
+
+apt reinstall pve-edk2-firmware-ovmf 
+or
+apt reinstall pve-edk2-firmware-ovmf=4.2025.02-4
 ```
 
 ## 3. Creating a Virtual Machine
