@@ -3,28 +3,34 @@ eax: 1
 ebx: 0
 ecx: 0
 edx: 64
-[  DETECTED  ] Checking hypervisor str...     这个足够折腾了，目前没思路
+1、[  DETECTED  ] Checking hypervisor str...     这个足够折腾了，目前没思路
+
+[CORE DEBUG] HYPER_X: returned from cache
+[DEBUG] CPUID: max hypervisor leaf = 1073741825
+[DEBUG] Average read latency: 2360 cycles
+2、[  DETECTED  ] Checking timing anomalies...  这个有时候能过有时候不能过，没思路
 
 [DEBUG] REGISTRY_KEYS: detected HKLM\SYSTEM\ControlSet001\Services\VirtioSerial for brand KVM
 [DEBUG] REGISTRY_KEYS: detected HKLM\SYSTEM\ControlSet001\Services\BALLOON for brand KVM
 [DEBUG] REGISTRY_KEYS: detected HKLM\SYSTEM\ControlSet001\Services\BalloonService for brand KVM
-[DEBUG] REGISTRY_KEYS: detected HKLM\SYSTEM\ControlSet001\Services\netkvm for brand KVM       这上面提示有几个就去注册表里面对照着删除，或者安装全新的win10系统
-[  DETECTED  ] Checking registry keys...
+[DEBUG] REGISTRY_KEYS: detected HKLM\SYSTEM\ControlSet001\Services\netkvm for brand KVM       这上面提示有几个就去注册表里面对照着删除，或者安装全新的win10系统，这个好过
+3、[  DETECTED  ] Checking registry keys...
+
+4、[  DETECTED  ] Checking GPU capabilities... 这个要有个显卡 和下面 Checking QEMU passthrough报错是 二出一
+[DEBUG] QEMU_PASSTHROUGH: PCIROOT(0)#PCI(0200) 直通pci显卡等设备问题慢慢想解决
+[DEBUG] QEMU_PASSTHROUGH: ACPI(_SB_)#ACPI(PCI0)#ACPI(S10_)  直通pci显卡等设备问题慢慢想解决
+4、[  DETECTED  ] Checking QEMU passthrough... 就这一个就检查出来是QEMU+KVM虚拟机
 
 [DEBUG] FIRMWARE: Not enough SSDT tables for a real system  这个要加载两个以上ssdt 比如 args: -acpitable file=/root/ssdt.aml -acpitable file=/root/ssdt-ec.aml
 [DEBUG] FIRMWARE: No _OSI params found 这个要在dsdt里面实现windows关键字的返回
-[  DETECTED  ] Checking firmware...
+5、[  DETECTED  ] Checking firmware...
 
 [DEBUG] PCI_DEVICES: Found 886 devices 这个要慢慢检查
 [DEBUG] PCI_DEVICES: Detected Red Hat + Virtio device -> 452202496 这个也要慢慢检查
-[  DETECTED  ] Checking PCI vendor/device ID...
-
-[DEBUG] QEMU_PASSTHROUGH: PCIROOT(0)#PCI(0200) 直通pci显卡等设备问题慢慢想解决
-[DEBUG] QEMU_PASSTHROUGH: ACPI(_SB_)#ACPI(PCI0)#ACPI(S10_)  直通pci显卡等设备问题慢慢想解决
-[  DETECTED  ] Checking QEMU passthrough... 就这一个就检查出来是QEMU+KVM虚拟机
+6、[  DETECTED  ] Checking PCI vendor/device ID...
 
 [CORE DEBUG] HYPER_X: returned from cache Checking hypervisor str这个解决了这个就解决了
-[  DETECTED  ] Checking hypervisor interception...
+7、[  DETECTED  ] Checking hypervisor interception...
 
 
 [DEBUG] theoretical maximum points: 3915
@@ -36,9 +42,12 @@ VM brand: QEMU+KVM
 VM type: Hypervisor (type 1)
 VM likeliness: 100%
 VM confirmation: true
-VM detections: 6/96
+VM detections: 7/96
 
 除了pafish和al-khaser是虚拟机环境检测的两个金标准外，现在又有一个新的检测项目 https://github.com/kernelwernel/VMAware
-以上是VMAware检测出来的结果，慢慢弄了
+
+以上是VMAware检测出来的结果，7个过不了，目前解决了以下：
+3、[  DETECTED  ] Checking registry keys... 去注册表里面对照着删除就是
+
 20250814测试留存
 
