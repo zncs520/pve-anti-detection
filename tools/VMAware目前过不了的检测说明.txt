@@ -54,7 +54,7 @@ VM detections: 7/96
     "HKLM\\SYSTEM\\CurrentControlSet\\Enum\\PCI",
     "HKLM\\SYSTEM\\CurrentControlSet\\Enum\\USB",
     "HKLM\\SYSTEM\\CurrentControlSet\\Enum\\HDAUDIO"
-    注册表这三个地方，要不0x1af4 0x1b36的设备全部删除干净(不知道怎么强制删除)，删除不了需要重装win10系统
+    注册表这三个地方，把0x1af4 0x1b36的设备全部删除干净(不知道怎么强制删除,删除总是报错)，删除不了需要重装win10系统
 
 20250814测试留存
 
