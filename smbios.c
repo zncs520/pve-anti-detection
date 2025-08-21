@@ -718,7 +718,7 @@ static void smbios_build_type_22_table(void)
 	SMBIOS_TABLE_SET_STR(22, serial_number,"lixiaoliu666");
 	SMBIOS_TABLE_SET_STR(22, device_name,"BAT0");
 	t->device_chemistry=0x6;//lion
-	t->design_capacity=cpu_to_le16(0xECFA);// 60666(0xECFA) x 1(0x1)= 60666mWh
+	t->design_capacity=cpu_to_le16(0xECF4);// 60660(0xECF4) x 1(0x1)= 60660mWh
 	t->design_voltage=cpu_to_le16(0x2EE0); //12 v 
 	t->sbds_version_number=0x0; 
 	t->maximum_error_in_battery_data=0x1;
