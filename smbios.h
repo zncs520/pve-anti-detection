@@ -419,7 +419,21 @@ struct smbios_type_39 {
 //https://www.dmtf.org/sites/default/files/standards/documents/DSP0134_3.8.0WIP50.pdf ��ʹ������淶�ļ�System Management BIOS (SMBIOS) Reference Specification����type 22 �ڲ�������Ϣ
 struct smbios_type_22 {
     struct smbios_structure_header header;
+	uint8_t location;
+	uint8_t manufacturer;
+	uint8_t manufacturer_date;
+	uint8_t serial_number;
 	uint8_t device_name;
+	uint8_t device_chemistry;
+	uint16_t design_capacity;
+	uint16_t design_voltage;
+	uint8_t sbds_version_number;
+	uint8_t maximum_error_in_battery_data;
+	uint16_t sbds_serial_number;
+	uint16_t sbds_manufacture_date;
+	uint8_t sbds_device_chemistry;
+	uint8_t design_capacity_multiplier;
+	uint32_t oem_specific;
 } QEMU_PACKED;
 
 /* SMBIOS type 127 -- End-of-table */
