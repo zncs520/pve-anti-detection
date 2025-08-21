@@ -712,8 +712,22 @@ static void smbios_build_type_39_table(void)
 static void smbios_build_type_22_table(void)
 {
     SMBIOS_BUILD_TABLE_PRE(22, T22_BASE, true); /* required */
-	SMBIOS_TABLE_SET_STR(22, device_name,"lixiaoliu Battery");
+	SMBIOS_TABLE_SET_STR(22, location,"in the back");
+	SMBIOS_TABLE_SET_STR(22, manufacturer,"lixiaoliu");
+	SMBIOS_TABLE_SET_STR(22, manufacturer_date,"02/02/2025");
+	SMBIOS_TABLE_SET_STR(22, serial_number,"lixiaoliu666");
+	SMBIOS_TABLE_SET_STR(22, device_name,"BAT0");
+	t->device_chemistry=0x8;
+	t->design_capacity=cpu_to_len16(0x1CE8);
+	t->design_voltage=cpu_to_len16(0x2EE0);
+	t->sbds_version_number=0x0;
+	t->maximum_error_in_battery_data=0x1;
+	t->design_capacity_multiplier=0x1;
+	t->oem_specific=cpu_to_len16(0xcafebabe);
     SMBIOS_BUILD_TABLE_POST;
+	//uint16_t sbds_serial_number;
+	//uint16_t sbds_manufacture_date;
+	//uint8_t sbds_device_chemistry;
 }
 #define T16_BASE 0x1000
 #define T17_BASE 0x1100
