@@ -707,7 +707,7 @@ static void smbios_build_type_39_table(void)
     SMBIOS_BUILD_TABLE_POST;
 }
 
-/* SMBIOS type 22 PortableBattery （电池 这个没有写完） 李晓流 dds666 added*/
+/* SMBIOS type 22 PortableBattery （电池 这个基本写完） 李晓流 dds666 added*/
 //https://www.dmtf.org/sites/default/files/standards/documents/DSP0134_3.8.0WIP50.pdf 请使用这个规范文件System Management BIOS (SMBIOS) Reference Specification设置type 22 内部参数信息
 static void smbios_build_type_22_table(void)
 {
@@ -718,12 +718,12 @@ static void smbios_build_type_22_table(void)
 	SMBIOS_TABLE_SET_STR(22, serial_number,"lixiaoliu666");
 	SMBIOS_TABLE_SET_STR(22, device_name,"BAT0");
 	t->device_chemistry=0x6;//lion
-	t->design_capacity=cpu_to_le16(0xAD70);// 44400(0xAD70) x 2(0x2)=88800 mWh
+	t->design_capacity=cpu_to_le16(0xECFA);// 60666(0xECFA) x 1(0x1)= 60666mWh
 	t->design_voltage=cpu_to_le16(0x2EE0); //12 v 
 	t->sbds_version_number=0x0; 
 	t->maximum_error_in_battery_data=0x1;
-	t->design_capacity_multiplier=0x2;//
-	t->oem_specific=cpu_to_le32(0x666);
+	t->design_capacity_multiplier=0x1;//
+	t->oem_specific=cpu_to_le32(0x60666);
     SMBIOS_BUILD_TABLE_POST;
 	//uint16_t sbds_serial_number;
 	//uint16_t sbds_manufacture_date;
