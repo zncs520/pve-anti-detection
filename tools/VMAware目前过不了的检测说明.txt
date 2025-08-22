@@ -3,7 +3,7 @@ eax: 1
 ebx: 0
 ecx: 0
 edx: 64
-1、[  DETECTED  ] Checking hypervisor str...     物理机全部返回为0
+1、[  DETECTED  ] Checking hypervisor str...     物理机全部返回为0处理
 
 [CORE DEBUG] HYPER_X: returned from cache
 [DEBUG] CPUID: max hypervisor leaf = 1073741825
@@ -22,14 +22,14 @@ edx: 64
 4、[  DETECTED  ] Checking QEMU passthrough... 就这一个就检查出来是QEMU+KVM虚拟机 这个在后续版本中删除了这个检测，直接忽略
 
 [DEBUG] FIRMWARE: Not enough SSDT tables for a real system  这个要加载两个以上ssdt 比如 args: -acpitable file=/root/ssdt.aml -acpitable file=/root/ssdt-ec.aml
-[DEBUG] FIRMWARE: No _OSI params found 这个要在dsdt里面实现_osi windows2012关键字
+[DEBUG] FIRMWARE: No _OSI params found 这个要在dsdt里面实现_osi windows2012 2013等关键字
 [DEBUG] FIRMWARE: HPET table not found 这个加载 -acpitable file=/root/hept.aml 就可以解决
-[DEBUG] FIRMWARE: FACP indicates VM (rev 3), (length 244)  Most VMs use an older-style FADT of length 244  bytes (revision  3)  这个修改版本3为4处理，长度244以上 need add Sleep Control/Status registers and Hypervisor ID
+[DEBUG] FIRMWARE: FACP indicates VM (rev 3), (length 244)  Most VMs use an older-style FADT of length 244  bytes (revision  3)  这个修改版本3为4处理，长度244以上 增加 Sleep Control/Status registers and Hypervisor ID 长度就到268
 [DEBUG] FIRMWARE: SSDT/DSDT revision indicates VM (rev 1)  修改ssdt和dsdt的版本为至少2
 5、[  DETECTED  ] Checking firmware...
 
 [DEBUG] PCI_DEVICES: Found 886 devices 这个要慢慢检查和删除
-[DEBUG] PCI_DEVICES: Detected Red Hat + Virtio device -> 452202496 =1af41000 这个避免0x1af4 0x1b36的设备就能解决
+[DEBUG] PCI_DEVICES: Detected Red Hat + Virtio device -> 452202496 =1af41000 这个避免0x1af4 0x1b36的设备就能解决，声卡也要处理
 6、[  DETECTED  ] Checking PCI vendor/device ID...
 
 [CORE DEBUG] HYPER_X: returned from cache                Checking hypervisor str这个检测解决了怎么还有呢？
@@ -58,7 +58,7 @@ VM detections: 7/96
     4、[  DETECTED  ] Checking GPU capabilities...
         加显卡直通，核显独显vgpu
     5、[  DETECTED  ] Checking firmware...
-        
+        这个要处理很多很多，基本都处理了
     6、[  DETECTED  ] Checking PCI vendor/device ID... 
         "HKLM\\SYSTEM\\CurrentControlSet\\Enum\\PCI",
         "HKLM\\SYSTEM\\CurrentControlSet\\Enum\\USB",
