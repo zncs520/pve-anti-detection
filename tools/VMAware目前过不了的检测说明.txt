@@ -26,14 +26,17 @@ edx: 64
 [DEBUG] FIRMWARE: HPET table not found 这个加载 -acpitable file=/root/hept.aml 就可以解决
 [DEBUG] FIRMWARE: FACP indicates VM (rev 3), (length 244)  Most VMs use an older-style FADT of length 244  bytes (revision  3)  这个修改版本3为4处理，长度244以上 增加 Sleep Control/Status registers and Hypervisor ID 长度就到268
 [DEBUG] FIRMWARE: SSDT/DSDT revision indicates VM (rev 1)  修改ssdt和dsdt的版本为至少2
+[DEBUG] FIRMWARE: ACPI missing thermal zones and/or PrepareToSleep information 像_OSI一样加_TZ_ 和 _PTS
 5、[  DETECTED  ] Checking firmware...
+
+6、[  DETECTED  ] Checking ACPI device signatures... 这个慢慢弄了
 
 [DEBUG] PCI_DEVICES: Found 886 devices 这个要慢慢检查和删除
 [DEBUG] PCI_DEVICES: Detected Red Hat + Virtio device -> 452202496 =1af41000 这个避免0x1af4 0x1b36的设备就能解决，声卡也要处理
-6、[  DETECTED  ] Checking PCI vendor/device ID...
+7、[  DETECTED  ] Checking PCI vendor/device ID...
 
-[CORE DEBUG] HYPER_X: returned from cache                Checking hypervisor str这个检测解决了怎么还有呢？
-7、[  DETECTED  ] Checking hypervisor interception...
+[CORE DEBUG] HYPER_X: returned from cache                Checking hypervisor str这个检测解决了怎么还有呢？这个慢慢弄了
+8、[  DETECTED  ] Checking hypervisor interception...
 
 
 [DEBUG] theoretical maximum points: 3915
@@ -45,11 +48,11 @@ VM brand: QEMU+KVM
 VM type: Hypervisor (type 1)
 VM likeliness: 100%
 VM confirmation: true
-VM detections: 7/96
+VM detections: 8/96
 
 除了pafish和al-khaser是虚拟机环境检测的两个金标准外，现在又有一个新的检测项目 https://github.com/kernelwernel/VMAware
 
-以上是VMAware检测出来的结果，7个过不了，目前解决了以下：
+以上是VMAware检测出来的结果，8个过不了，目前解决了以下：
 
     1、[  DETECTED  ] Checking hypervisor str... 这个改kvm
     2、[  DETECTED  ] Checking timing anomalies...  这个有时候能过有时候不能过，需要改内核（这个不做）
@@ -59,7 +62,9 @@ VM detections: 7/96
         加显卡直通，核显独显vgpu
     5、[  DETECTED  ] Checking firmware...
         这个要处理很多很多，基本都处理了
-    6、[  DETECTED  ] Checking PCI vendor/device ID... 
+
+
+    7、[  DETECTED  ] Checking PCI vendor/device ID... 
         "HKLM\\SYSTEM\\CurrentControlSet\\Enum\\PCI",
         "HKLM\\SYSTEM\\CurrentControlSet\\Enum\\USB",
         "HKLM\\SYSTEM\\CurrentControlSet\\Enum\\HDAUDIO"
