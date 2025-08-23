@@ -17,6 +17,7 @@ edx: 64
 3、[  DETECTED  ] Checking registry keys...
 
 4、[  DETECTED  ] Checking GPU capabilities... 这个要有个显卡 和下面 Checking QEMU passthrough报错是 二出一
+
 [DEBUG] QEMU_PASSTHROUGH: PCIROOT(0)#PCI(0200) 直通pci显卡等设备问题慢慢想解决
 [DEBUG] QEMU_PASSTHROUGH: ACPI(_SB_)#ACPI(PCI0)#ACPI(S10_)  直通pci显卡等设备问题慢慢想解决
 4、[  DETECTED  ] Checking QEMU passthrough... 就这一个就检查出来是QEMU+KVM虚拟机 这个在后续版本中删除了这个检测，直接忽略
@@ -29,6 +30,9 @@ edx: 64
 [DEBUG] FIRMWARE: ACPI missing thermal zones and/or PrepareToSleep information 像_OSI一样加_TZ_ 和 _PTS
 5、[  DETECTED  ] Checking firmware...
 
+[DEBUG] ACPI_SIGNATURE: PCIROOT(0)#PCI(0100)
+[DEBUG] ACPI_SIGNATURE: ACPI(_SB_)#ACPI(PCI0)#ACPI(S08_) 
+ACPI_SIGNATURE: No baremetal display device information detected 直通显卡（我这里只测试的直通核显，插的hdmi显卡欺骗器，不知道插显示器报错不？）后只报错这个
 6、[  DETECTED  ] Checking ACPI device signatures... 这个慢慢弄了
 
 [DEBUG] PCI_DEVICES: Found 886 devices 这个要慢慢检查和删除
