@@ -34,7 +34,7 @@ Checking System\CurrentControlSet\Enum\IDE CdRomQEMU_QEMU_DVD-ROM_______________
 [*] Checking SMBIOS tables                                   至少41种type设备                                      
 
 -------------------------[Hyper-V Detection]-------------------------
-[*] Checking for Hyper-V global objects                                                          有关键词 VDRVROOT 这个可以不管，物理机也有，名字交叫microsoft虚拟驱动器枚举器，看着不舒服直接把该设备从设备管理器里面卸载就是，卸载了这个检测就能过
+[*] Checking for Hyper-V global objects                                                          有关键词 VDRVROOT 这个可以不管，物理机也有，名字叫microsoft虚拟驱动器枚举器，看着不舒服直接把该设备从设备管理器里面卸载就是，卸载了这个检测就能过
 object: VDRVROOT
 object: ROOT#vdrvroot#0000#{2e34d650-5819-42ca-84ae-d30803bae505}
 
@@ -48,5 +48,7 @@ object: ROOT#vdrvroot#0000#{2e34d650-5819-42ca-84ae-d30803bae505}
 1、Checking Local Descriptor Table location  这个我试了好几个物理机也过不了
 
 我个人的建议是直通sata硬盘或者m2硬盘给虚拟机，还有有线物理网卡（usb网卡）给虚拟机进行测试。
+
+另外增加了 VMAware目前过不了的检测说明.txt也可以去看看
 
 
