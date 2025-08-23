@@ -13,7 +13,7 @@ edx: 64
 [DEBUG] REGISTRY_KEYS: detected HKLM\SYSTEM\ControlSet001\Services\VirtioSerial for brand KVM
 [DEBUG] REGISTRY_KEYS: detected HKLM\SYSTEM\ControlSet001\Services\BALLOON for brand KVM
 [DEBUG] REGISTRY_KEYS: detected HKLM\SYSTEM\ControlSet001\Services\BalloonService for brand KVM
-[DEBUG] REGISTRY_KEYS: detected HKLM\SYSTEM\ControlSet001\Services\netkvm for brand KVM       这个好过。这上面提示有几个就去注册表里面对照着删除，或者安装全新的win10系统，如果删除不了请下载 https://learn.microsoft.com/en-us/sysinternals/downloads/pstools 这个软件，使用里面的PsExec强制删 cmd管理员模式运行 psexec -i -d -s c:\windows\regedit.exe 然后去删
+[DEBUG] REGISTRY_KEYS: detected HKLM\SYSTEM\ControlSet001\Services\netkvm for brand KVM       这个好过。这上面提示有几个就去注册表里面对照着删除，或者安装全新的win10系统，如果删除不了请下载 https://learn.microsoft.com/en-us/sysinternals/downloads/pstools 这个软件，使用里面的PsExec强制删 cmd管理员模式运行 psexec -i -d -s regedit.exe 然后会以system身份去删
 3、[  DETECTED  ] Checking registry keys...
 
 4、[  DETECTED  ] Checking GPU capabilities... 这个要有个显卡 和下面 Checking QEMU passthrough报错是 二出一
@@ -37,7 +37,7 @@ ACPI_SIGNATURE: No baremetal display device information detected 直通显卡（
 
 [DEBUG] PCI_DEVICES: Found 886 devices 这个要慢慢检查和删除
 [DEBUG] PCI_DEVICES: Detected Red Hat + Virtio device -> 452202496 =1af41000 这个避免0x1af4 0x1b36 0x0627的设备就能解决，ich9-intel-hda声卡也要处理
-删除不了请下载 https://learn.microsoft.com/en-us/sysinternals/downloads/pstools 这个软件，使用里面的PsExec进行强制删 cmd管理员模式运行 psexec -i -d -s c:\windows\regedit.exe 然后去删，删HKLM\SYSTEM\CurrentControlSet\Enum 下面pci usb hdaudio里面的所有1afe 1b36 0627的设备
+删除不了请下载 https://learn.microsoft.com/en-us/sysinternals/downloads/pstools 这个软件，使用里面的PsExec进行强制删 cmd管理员模式运行 psexec -i -d -s regedit.exe 然后会以system身份去删，删HKLM\SYSTEM\CurrentControlSet\Enum 下面pci usb hdaudio里面的所有1afe 1b36 0627的设备
 7、[  DETECTED  ] Checking PCI vendor/device ID...
 
 [CORE DEBUG] HYPER_X: returned from cache                Checking hypervisor str这个检测解决了怎么还有呢？这个慢慢弄了
@@ -73,7 +73,7 @@ VM detections: 8/96
         "HKLM\\SYSTEM\\CurrentControlSet\\Enum\\PCI",
         "HKLM\\SYSTEM\\CurrentControlSet\\Enum\\USB",
         "HKLM\\SYSTEM\\CurrentControlSet\\Enum\\HDAUDIO"
-        注册表这三个地方，把0x1af4 0x1b36 0x0627的设备全部删除干净(不知道怎么强制删除,删除总是报错)，删除不了需要重装win10系统或者请下载 https://learn.microsoft.com/en-us/sysinternals/downloads/pstools 这个软件，使用里面的PsExec进行强制删 cmd管理员模式运行 psexec -i -d -s c:\windows\regedit.exe 然后去删
+        注册表这三个地方，把0x1af4 0x1b36 0x0627的设备全部删除干净(不知道怎么强制删除,删除总是报错)，删除不了需要重装win10系统或者请下载 https://learn.microsoft.com/en-us/sysinternals/downloads/pstools 这个软件，使用里面的PsExec进行强制删 cmd管理员模式运行 psexec -i -d -s regedit.exe 然后会以system身份去删
     
     
     
