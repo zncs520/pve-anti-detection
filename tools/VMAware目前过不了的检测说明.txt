@@ -32,7 +32,7 @@ edx: 64
 
 [DEBUG] ACPI_SIGNATURE: PCIROOT(0)#PCI(0100)
 [DEBUG] ACPI_SIGNATURE: ACPI(_SB_)#ACPI(PCI0)#ACPI(S08_) 
-ACPI_SIGNATURE: No baremetal display device information detected 直通显卡（我这里只测试的直通核显，插的hdmi显卡欺骗器，不知道插显示器报错不？）后只报错这个
+ACPI_SIGNATURE: No baremetal display device information detected 这个一般是你用了远控软件比如rustdesk产生了虚拟显示设备比如：USB Mobile Monitor Virtual Display，直接卸载它就好了
 6、[  DETECTED  ] Checking ACPI device signatures... 这个慢慢弄了
 
 [DEBUG] PCI_DEVICES: Found 886 devices 这个要慢慢检查和删除
