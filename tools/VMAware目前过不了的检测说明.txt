@@ -31,7 +31,7 @@ edx: 64
 5、[  DETECTED  ] Checking firmware...
 
 [DEBUG] ACPI_SIGNATURE: PCIROOT(0)#PCI(0100)
-[DEBUG] ACPI_SIGNATURE: ACPI(_SB_)#ACPI(PCI0)#ACPI(S08_) 
+[DEBUG] ACPI_SIGNATURE: ACPI(_SB_)#ACPI(PCI0)#ACPI(S08_)  不要出现ACPI(Sxx 这种就是x代表数字
 ACPI_SIGNATURE: No baremetal display device information detected 这个一般是你用了远控软件比如rustdesk产生了虚拟显示设备比如：USB Mobile Monitor Virtual Display，直接卸载它就好了
 6、[  DETECTED  ] Checking ACPI device signatures... 这个慢慢弄了
 
@@ -41,7 +41,7 @@ ACPI_SIGNATURE: No baremetal display device information detected 这个一般是
 7、[  DETECTED  ] Checking PCI vendor/device ID...
 
 [CORE DEBUG] HYPER_X: returned from cache                Checking hypervisor str这个检测解决了怎么还有呢？这个慢慢弄了
-8、[  DETECTED  ] Checking hypervisor interception...
+8、[  DETECTED  ] Checking hypervisor interception... 使用内核模块kvm.ko过这个
 
 
 [DEBUG] theoretical maximum points: 3915
@@ -60,21 +60,22 @@ VM detections: 8/96
 以上是VMAware检测出来的结果，8个过不了，目前解决了以下：
 
     1、[  DETECTED  ] Checking hypervisor str... 这个改kvm
-    2、[  DETECTED  ] Checking timing anomalies...  这个有时候能过有时候不能过，需要改内核（这个不做）
+    2、[  DETECTED  ] Checking timing anomalies...  这个有时候能过有时候不能过，需要改内核（懒得去改）
     3、[  DETECTED  ] Checking registry keys... 
         去注册表里面对照着删除就是
     4、[  DETECTED  ] Checking GPU capabilities...
         加显卡直通，核显独显vgpu
     5、[  DETECTED  ] Checking firmware...
         这个要处理很多很多，基本都处理了
-
-
+    6、[  DETECTED  ] Checking ACPI device signatures...
+        检测什么过什么
     7、[  DETECTED  ] Checking PCI vendor/device ID... 
         "HKLM\\SYSTEM\\CurrentControlSet\\Enum\\PCI",
         "HKLM\\SYSTEM\\CurrentControlSet\\Enum\\USB",
         "HKLM\\SYSTEM\\CurrentControlSet\\Enum\\HDAUDIO"
         注册表这三个地方，把0x1af4 0x1b36 0x0627的设备全部删除干净(不知道怎么强制删除,删除总是报错)，删除不了需要重装win10系统或者请下载 https://learn.microsoft.com/en-us/sysinternals/downloads/pstools 这个软件，使用里面的PsExec进行强制删 cmd管理员模式运行 psexec -i -d -s regedit.exe 然后会以system身份去删
-    
+    8、[  DETECTED  ] Checking hypervisor interception...
+        使用内核模块kvm.ko过这个
     
     
     
