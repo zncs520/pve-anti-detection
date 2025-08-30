@@ -30,7 +30,7 @@
 [*] Checking if Windows is Genuine                                                                  激活一下windows就是了
 [*] Checking Enum\IDE and Enum\SCSI entries for VM strings                                
 Checking System\CurrentControlSet\Enum\IDE CdRomQEMU_QEMU_DVD-ROM_______________________2.5+____ for qemu (1) 
-目前的解决办法，从安装win系统开始，就用反虚拟化包（如果不想重装系统请用 https://learn.microsoft.com/en-us/sysinternals/downloads/pstools 这个软件，使用里面的PsExec进行强制删 cmd管理员模式运行 psexec -i -d -s regedit.exe 然后会以system身份去删，删HKLM\SYSTEM\CurrentControlSet\Enum 下面acpi scsi里面的所有qemu关键字的目录或设备）
+目前的解决办法，从安装win系统开始，就用反虚拟化包（如果不想重装系统请用 https://learn.microsoft.com/en-us/sysinternals/downloads/pstools 这个软件，使用里面的PsExec进行强制删 cmd管理员模式运行 psexec -i -d -s regedit.exe 然后会以system身份去删，删HKLM\SYSTEM\CurrentControlSet\Enum 下面acpi scsi ide里面的所有qemu关键字的目录或设备）
 [*] Checking SMBIOS tables                                   至少41种type设备                                      
 
 -------------------------[Hyper-V Detection]-------------------------
@@ -50,6 +50,7 @@ object: ROOT#vdrvroot#0000#{2e34d650-5819-42ca-84ae-d30803bae505}
 我个人的建议是直通sata硬盘或者m2硬盘给虚拟机，还有有线物理网卡（usb网卡）给虚拟机进行测试。
 
 另外增加了 VMAware目前过不了的检测说明.txt也可以去看看
+
 
 
 
