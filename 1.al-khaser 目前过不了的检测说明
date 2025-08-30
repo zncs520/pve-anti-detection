@@ -1,0 +1,54 @@
+李晓流 & 大大帅666 作品 202408230出品
+李晓流 b站地址：https://space.bilibili.com/565938745
+大大帅666 b站地址 https://space.bilibili.com/14205798
+
+目前过不了的检测列表： 这个检测软件的源码下载地址在：https://github.com/LordNoteworthy/al-khaser 你可以使用vs2022（一定是这个版本，旧了的没法编译）进行编译自行测试过下面得问题。
+也可以使用pafish64.exe进行检测，源码地址：https://github.com/a0rtega/pafish  需要用Mingw编译，懒得编译我直接下载的可运行版本
+注意： pafish和al-khaser是虚拟机环境检测的两个金标准
+
+[al-khaser version 0.82] 运行这个软件需要安装vc各种运行环境才能运行哈！
+-------------------------[Generic Sandboxe/VM Detection]-------------------------
+[*] Checking Local Descriptor Table location                                                       [ BAD  ] LDT base: 0xdeadbeef     not LDT base: 0xdead0000 这个不好解决的，物理机运行也是这个效果
+[*] Checking hard disk size using WMI                                                                   解决办法就是系统硬盘大小要大于80G，最好128G之类的，硬盘大小别太抠门了，要像真是的系统盘ssd大小哈
+[*] Checking disk size using GetDiskFreeSpaceEx                                                    解决办法就是系统硬盘大小要大于80G，最好128G之类的，硬盘大小别太抠门了，要像真是的系统盘ssd大小哈
+[*] Checking CPU fan using WMI                                                                    cmd终端运行后面命令可以物理机或虚拟机手动测试读取（以下类似）：wmic path Win32_Fan get *
+[*] Checking Win32_CacheMemory with WMI                                                           wmic path Win32_CacheMemory get *
+[*] Checking Win32_PhysicalMemory with WMI   					wmic path Win32_PhysicalMemory get *
+[*] Checking Win32_MemoryDevice with WMI                                                             wmic path Win32_MemoryDevice get *
+[*] Checking Win32_MemoryArray with WMI       					wmic path Win32_MemoryArray get *
+[*] Checking Win32_VoltageProbe with WMI   电压探针                                                        wmic path Win32_VoltageProbe get *
+[*] Checking Win32_PortConnector with WMI                                                           wmic path Win32_PortConnector get *  
+[*] Checking Win32_SMBIOSMemory with WMI 					wmic path Win32_SMBIOSMemory get *
+[*] Checking ThermalZoneInfo performance counters with WMI                                         wmic path Win32_PerfFormattedData_Counters_ThermalZoneInformation get *  这个通过acpi加载ssdt解决
+[*] Checking CIM_Memory with WMI     物理内存                                                               wmic path CIM_Memory get *
+[*] Checking CIM_Sensor with WMI      传感器设备                                                              wmic path CIM_Sensor get *
+[*] Checking CIM_NumericSensor with WMI      数字传感器                                                      wmic path CIM_NumericSensor get *
+[*] Checking CIM_TemperatureSensor with WMI  温度传感器                                                     wmic path CIM_TemperatureSensor get *
+[*] Checking CIM_VoltageSensor with WMI   电压传感器                                                         wmic path CIM_VoltageSensor get *
+[*] Checking CIM_PhysicalConnector with WMI                                                    wmic path CIM_PhysicalConnector get *  
+[*] Checking CIM_Slot with WMI                                                                     wmic path CIM_Slot get *
+[*] Checking if Windows is Genuine                                                                  激活一下windows就是了
+[*] Checking Enum\IDE and Enum\SCSI entries for VM strings                                
+Checking System\CurrentControlSet\Enum\IDE CdRomQEMU_QEMU_DVD-ROM_______________________2.5+____ for qemu (1) 
+目前的解决办法，从安装win系统开始，就用反虚拟化包（如果不想重装系统请用 https://learn.microsoft.com/en-us/sysinternals/downloads/pstools 这个软件，使用里面的PsExec进行强制删 cmd管理员模式运行 psexec -i -d -s regedit.exe 然后会以system身份去删，删HKLM\SYSTEM\CurrentControlSet\Enum 下面acpi scsi里面的所有qemu关键字的目录或设备）
+[*] Checking SMBIOS tables                                   至少41种type设备                                      
+
+-------------------------[Hyper-V Detection]-------------------------
+[*] Checking for Hyper-V global objects                                                          有关键词 VDRVROOT 这个可以不管，物理机也有，名字叫microsoft虚拟驱动器枚举器，看着不舒服直接把该设备从设备管理器里面卸载就是，卸载了这个检测就能过
+object: VDRVROOT
+object: ROOT#vdrvroot#0000#{2e34d650-5819-42ca-84ae-d30803bae505}
+
+
+
+-------------------------[Timing-attacks]-------------------------
+[*] Checking RDTSC which force a VM Exit (cpuid)                                                 这个要打内核补丁，使用定制的内核或者kvm内核模块，目前能通过了
+
+
+整体来说，pafish和al-khaser目前只有1个检测过不了：
+1、Checking Local Descriptor Table location  这个我试了好几个物理机也过不了
+
+我个人的建议是直通sata硬盘或者m2硬盘给虚拟机，还有有线物理网卡（usb网卡）给虚拟机进行测试。
+
+另外增加了 VMAware目前过不了的检测说明.txt也可以去看看
+
+
