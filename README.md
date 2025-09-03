@@ -86,7 +86,7 @@ nano /etc/pve/qemu-server/100.conf
 
 我的完整虚拟机配置如下(适用于qemu 9和10 版本，qemu 7和qemu 8请看补充):
 
-args: -acpitable file=/root/ssdt.aml -cpu host,hypervisor=off,vmware-cpuid-freq=false,enforce=false,host-phys-bits=true -smbios type=0 -smbios type=9 -smbios type=8 -smbios type=8
+args: -acpitable file=/root/ssdt.aml -acpitable file=/root/ssdt-ec.aml -acpitable file=/root/hpet.aml -cpu host,hypervisor=off,vmware-cpuid-freq=false,enforce=false,host-phys-bits=true -smbios type=0,vendor="American Megatrends International LLC.",version=H3.7G,date='02/21/2023',release=3.7 -smbios type=1,manufacturer="Maxsun",product="MS-Terminator B760M",version="VER:H3.7G(2022/11/29)",serial="Default string",sku="Default string",family="Default string" -smbios type=2,manufacturer="Maxsun",product="MS-Terminator B760M",version="VER:H3.7G(2022/11/29)",serial="Default string",asset="Default string",location="Default string" -smbios type=3,manufacturer="Default string",version="Default string",serial="Default string",asset="Default string",sku="Default string" -smbios type=17,serial=DF1EC466,asset="9876543210" -smbios type=4,manufacturer="Intel(R) Corporation",version="12th Gen Intel(R) 0000" -smbios type=9 -smbios type=8 -smbios type=8
 
 balloon: 0
 
@@ -130,7 +130,7 @@ usb1: host=258a:002a
 
 vmgenid: 2271babc-cafc-4c68-be8b-2bb3157c9924
 
-补充：qemu 9 虚拟机中的args参数我现在全部做了隐藏内部定制了，不需要指定了，就用我这上面的args就是。aida64你进去看就知道有些什么硬件了（风扇、温度、电压等）
+补充：qemu 10 虚拟机中的args参数我现在全部做了除了上面的可以设置（其他做了影藏定制），就用我这上面的args就是。aida64你进去看就知道有些什么硬件了（风扇、温度、电压等）
 
 如果是qemu 7和8，需要使用下面的args
 
@@ -147,6 +147,7 @@ https://www.bilibili.com/read/readlist/rl758108 pve反虚拟化检测玩游戏
 ## Star History
 
 [![Star History Chart](https://api.star-history.com/svg?repos=lixiaoliu666/pve-anti-detection&type=Date)](https://www.star-history.com/#lixiaoliu666/pve-anti-detection&Date)
+
 
 
 
