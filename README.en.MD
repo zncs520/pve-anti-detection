@@ -123,7 +123,7 @@ name: win10
 net0: e1000=D8:FC:93:56:1D:C7,bridge=vmbr0,firewall=1
 numa: 0
 ostype: l26
-sata0: local:102/vm-102-disk-1.raw,size=128G,ssd=1
+sata0: local:102/vm-102-disk-1.raw,size=128G,ssd=1,serial=0123456789ABCDEF0123
 scsihw: virtio-scsi-single
 smbios1: uuid=505429c8-a350-41e9-9154-3851c095254e
 sockets: 1
