@@ -130,7 +130,7 @@ usb1: host=258a:002a
 
 vmgenid: 2271babc-cafc-4c68-be8b-2bb3157c9924
 
-补充：qemu 10 虚拟机中的args参数我现在全部做了除了上面的可以设置（其他做了影藏定制），就用我这上面的args就是。ide sata硬盘可以serial设置固定的序列号（不设置默认随机硬盘序列号）。aida64你进去看就知道有些什么硬件了（风扇、温度、电压等）
+补充：qemu 10 虚拟机中的args参数我现在全部做了除了上面的可以设置（其他做了影藏定制），就用我这上面的args就是。硬盘不想序列号随机请ide sata设置serial=0123456789ABCDEF0123  类似这样20位数据）。。aida64你进去看就知道有些什么硬件了（风扇、温度、电压等）
 
 如果是qemu 7和8，需要使用下面的args
 
@@ -147,6 +147,7 @@ https://www.bilibili.com/read/readlist/rl758108 pve反虚拟化检测玩游戏
 ## Star History
 
 [![Star History Chart](https://api.star-history.com/svg?repos=lixiaoliu666/pve-anti-detection&type=Date)](https://www.star-history.com/#lixiaoliu666/pve-anti-detection&Date)
+
 
 
 
