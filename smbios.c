@@ -1307,8 +1307,8 @@ static bool smbios_get_tables_ep(MachineState *ms,
 	t->associativity=0x9; 12-way Set-Associative
 	*/
 	unsigned cores_per_socket = machine_topo_get_cores_per_socket(ms);
-	smbios_build_type_7_table(0,"L1 Cache",0x180,cores_per_socket*0x20,0x4,0x4,0x7); //李晓流 dds666 added 设置1级数据缓存，每个核心32kb
-	smbios_build_type_7_table(1,"L1 Cache",0x180,cores_per_socket*0x20,0x4,0x3,0x7); //李晓流 dds666 added 设置1级指令缓存，每个核心32kb
+	smbios_build_type_7_table(0,"L1 Cache",0x180,cores_per_socket*0x40,0x4,0x4,0x7); //李晓流 dds666 added 设置1级数据缓存，每个核心64kb
+	smbios_build_type_7_table(1,"L1 Cache",0x180,cores_per_socket*0x40,0x4,0x3,0x7); //李晓流 dds666 added 设置1级指令缓存，每个核心64kb
 	smbios_build_type_7_table(2,"L2 Cache",0x181,cores_per_socket*0x200,0x5,0x5,0x8); //李晓流 dds666 added 设置2级Unified缓存每个核心512kb
 	smbios_build_type_7_table(3,"L3 Cache",0x182,0x8000,0x6,0x5,0x8); //李晓流 dds666 added 设置3级Unified缓存，32M
 	
