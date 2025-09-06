@@ -1067,7 +1067,7 @@ static void smbios_build_type_17_table(unsigned instance, uint64_t size)
     SMBIOS_TABLE_SET_STR(17, manufacturer_str, "Kingston"); //李晓流 dds666 modify
     SMBIOS_TABLE_SET_STR(17, serial_number_str, type17.serial);//李晓流 dds666 modify
     SMBIOS_TABLE_SET_STR(17, asset_tag_number_str, type17.asset);//李晓流 dds666 modify
-    SMBIOS_TABLE_SET_STR(17, part_number_str, "KHX1600C9S3L/8G ");//李晓流 dds666 modify
+    SMBIOS_TABLE_SET_STR(17, part_number_str, "KHX1600C9S3L/32G");//李晓流 dds666 modify
     t->attributes = 0x02; /* test 1 */ //李晓流 dds666 modify 1代表 记不得了，你要测一下
     t->configured_clock_speed = t->speed; /* reuse value for max speed */
     t->minimum_voltage = cpu_to_le16(1350); /* Unknown */ //李晓流 dds666 modify 1.35v
