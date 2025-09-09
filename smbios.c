@@ -869,14 +869,14 @@ static void smbios_build_type_4_table(MachineState *ms, unsigned instance,
     }
     SMBIOS_TABLE_SET_STR(4, processor_version_str, type4.version);
     t->voltage = 0x8B;
-    t->external_clock = cpu_to_le16(0); /* Unknown */
+    t->external_clock = cpu_to_le16(0x64); /* 100mhz */
     t->max_speed = cpu_to_le16(type4.max_speed);
     t->current_speed = cpu_to_le16(type4.current_speed);
     t->status = 0x41; /* Socket populated, CPU enabled */
     t->processor_upgrade = 0x01; /* Other */
-    t->l1_cache_handle = cpu_to_le16(0xFFFF); /* N/A */
-    t->l2_cache_handle = cpu_to_le16(0xFFFF); /* N/A */
-    t->l3_cache_handle = cpu_to_le16(0xFFFF); /* N/A */
+    t->l1_cache_handle = cpu_to_le16(0x51); /* N/A */
+    t->l2_cache_handle = cpu_to_le16(0x52); /* N/A */
+    t->l3_cache_handle = cpu_to_le16(0x53); /* N/A */
     SMBIOS_TABLE_SET_STR(4, serial_number_str, "To Be Filled By O.E.M."); //李晓流 dds666
     SMBIOS_TABLE_SET_STR(4, asset_tag_number_str, "To Be Filled By O.E.M."); //李晓流 dds666
     SMBIOS_TABLE_SET_STR(4, part_number_str, "To Be Filled By O.E.M."); //李晓流 dds666
@@ -889,7 +889,7 @@ static void smbios_build_type_4_table(MachineState *ms, unsigned instance,
 
     t->thread_count = (threads_per_socket > 255) ? 0xFF : threads_per_socket;
 
-    t->processor_characteristics = cpu_to_le16(0x04); /* Unknown */ //李晓流 dds666 modify 0x4 计算得到代表64-bit Capable
+    t->processor_characteristics = cpu_to_le16(0xFC); /* Unknown */ //李晓流 dds666 modify 0x4 计算得到代表64-bit Capable
     t->processor_family2 = cpu_to_le16(0xC6); //李晓流 dds666 modify 和t->processor_family保持一致不一致都可以
 
     if (tbl_len == SMBIOS_TYPE_4_LEN_V30) {
