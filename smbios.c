@@ -870,7 +870,7 @@ static void smbios_build_type_4_table(MachineState *ms, unsigned instance,
     SMBIOS_TABLE_SET_STR(4, processor_version_str, type4.version);
     t->voltage = 0x8B;
     t->external_clock = cpu_to_le16(0x64); /* 100mhz */
-    t->max_speed = cpu_to_le16(type4.max_speed);
+    t->max_speed = cpu_to_le16(5500); //5.5ghz
     t->current_speed = cpu_to_le16(type4.current_speed);
     t->status = 0x41; /* Socket populated, CPU enabled */
     t->processor_upgrade = 0x01; /* Other */
