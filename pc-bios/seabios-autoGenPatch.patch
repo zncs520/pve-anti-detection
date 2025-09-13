@@ -1,0 +1,441 @@
+diff --git a/src/config.h b/src/config.h
+index 16952eb7..3ba46f54 100644
+--- a/src/config.h
++++ b/src/config.h
+@@ -9,10 +9,10 @@
+ //#define BUILD_CPUNAME8 "QEMUCPU "
+ //#define BUILD_APPNAME6 "QEMU  "
+ //#define BUILD_APPNAME4 "QEMU"
+-#define BUILD_APPNAME  "Bochs"
+-#define BUILD_CPUNAME8 "BOCHSCPU"
+-#define BUILD_APPNAME6 "BOCHS "
+-#define BUILD_APPNAME4 "BXPC"
++#define BUILD_APPNAME  "Intel"
++#define BUILD_CPUNAME8 "INTELCPU"
++#define BUILD_APPNAME6 "INTEL "
++#define BUILD_APPNAME4 "INTE"
+ 
+ // Maximum number of map entries in the e820 map
+ #define BUILD_MAX_E820 128
+diff --git a/src/fw/acpi.c b/src/fw/acpi.c
+index f23234e9..6475b87b 100644
+--- a/src/fw/acpi.c
++++ b/src/fw/acpi.c
+@@ -15,5 +15,5 @@ acpi_setup(void)
+     if (! CONFIG_ACPI)
+         return;
+ 
+-    dprintf(1, "ACPI tables for qemu 1.6 and older are not supported any more.\n");
++    dprintf(1, "ACPI tables for intel 1.6 and older are not supported any more.\n");
+ }
+diff --git a/src/fw/dev-q35.h b/src/fw/dev-q35.h
+index 201825de..14f00aca 100644
+--- a/src/fw/dev-q35.h
++++ b/src/fw/dev-q35.h
+@@ -3,7 +3,7 @@
+ 
+ #include "types.h"      // u16
+ 
+-#define PCI_DEVICE_ID_INTEL_Q35_MCH     0x29c0
++#define PCI_DEVICE_ID_INTEL_Q35_MCH     0xdd66
+ #define Q35_HOST_BRIDGE_PAM0            0x90
+ #define Q35_HOST_BRIDGE_SMRAM           0x9d
+ #define Q35_HOST_BRIDGE_PCIEXBAR        0x60
+@@ -14,7 +14,7 @@
+ #define Q35_HOST_PCIE_START_BUS_NUMBER  0
+ #define Q35_HOST_PCIE_END_BUS_NUMBER    255
+ 
+-#define PCI_DEVICE_ID_INTEL_ICH9_LPC    0x2918
++#define PCI_DEVICE_ID_INTEL_ICH9_LPC    0xdd88
+ #define ICH9_LPC_PMBASE                 0x40
+ #define ICH9_LPC_PMBASE_RTE             0x1
+ 
+diff --git a/src/fw/paravirt.c b/src/fw/paravirt.c
+index e5d4eca0..bdc2e676 100644
+--- a/src/fw/paravirt.c
++++ b/src/fw/paravirt.c
+@@ -75,18 +75,18 @@ static void kvm_detect(void)
+         memcpy(signature + 8, &edx, 4);
+         signature[12] = 0;
+         dprintf(1, "cpuid 0x%x: eax %x, signature '%s'\n", i, eax, signature);
+-        if (strcmp(signature, "KVMKVMKVM") == 0) {
++        if (strcmp(signature, "intel") == 0) {
+             kvm_cpuid_base = i;
+             max = eax;
+         }
+     }
+ 
+     if (kvm_cpuid_base) {
+-        dprintf(1, "Running on KVM\n");
++        dprintf(1, "Running on intel\n");
+         PlatformRunningOn |= PF_KVM;
+         if (max >= kvm_cpuid_base + 0x10) {
+             cpuid(kvm_cpuid_base + 0x10, &eax, &ebx, &ecx, &edx);
+-            dprintf(1, "kvm: have invtsc, freq %u kHz\n", eax);
++            dprintf(1, "intel: have invtsc, freq %u kHz\n", eax);
+             tsctimer_setfreq(eax, "invtsc");
+         }
+     }
+@@ -120,7 +120,7 @@ static void kvmclock_init(void)
+     kvmclock = memalign_low(sizeof(*kvmclock), 32);
+     memset(kvmclock, 0, sizeof(*kvmclock));
+     u32 value = (u32)(kvmclock);
+-    dprintf(1, "kvmclock: at 0x%x (msr 0x%x)\n", value, msr);
++    dprintf(1, "intelclock: at 0x%x (msr 0x%x)\n", value, msr);
+     wrmsr(msr, value | 0x01);
+ 
+     if (!(kvmclock->flags & PVCLOCK_TSC_STABLE_BIT))
+@@ -130,7 +130,7 @@ static void kvmclock_init(void)
+         MHz <<= -kvmclock->tsc_shift;
+     else
+         MHz >>= kvmclock->tsc_shift;
+-    dprintf(1, "kvmclock: stable tsc, %d MHz\n", MHz);
++    dprintf(1, "intelclock: stable tsc, %d MHz\n", MHz);
+     tsctimer_setfreq(MHz * 1000, "kvmclock");
+ }
+ 
+@@ -209,13 +209,13 @@ static void qemu_detect(void)
+     PlatformRunningOn |= PF_QEMU;
+     switch (d) {
+     case 0x1237:
+-        dprintf(1, "Running on QEMU (i440fx)\n");
++        dprintf(1, "Running on intel (i440fx)\n");
+         break;
+-    case 0x29c0:
+-        dprintf(1, "Running on QEMU (q35)\n");
++    case 0xdd66:
++        dprintf(1, "Running on intel (q35)\n");
+         break;
+     default:
+-        dprintf(1, "Running on QEMU (unknown nb: %04x:%04x)\n", v, d);
++        dprintf(1, "Running on intel (unknown nb: %04x:%04x)\n", v, d);
+         break;
+     }
+     physbits(1);
+@@ -267,7 +267,7 @@ static void msr_feature_control_setup(void)
+ }
+ 
+ void
+-qemu_platform_setup(void)
++qem_platform_setup(void)
+ {
+     if (!CONFIG_QEMU)
+         return;
+@@ -384,7 +384,7 @@ qemu_cfg_read(void *buf, int len)
+ }
+ 
+ static void
+-qemu_cfg_write(void *buf, int len)
++qem_cfg_write(void *buf, int len)
+ {
+     if (len == 0) {
+         return;
+@@ -426,7 +426,7 @@ qemu_cfg_read_entry(void *buf, int e, int len)
+ }
+ 
+ static void
+-qemu_cfg_write_entry(void *buf, int e, int len)
++qem_cfg_write_entry(void *buf, int e, int len)
+ {
+     if (qemu_cfg_dma_enabled()) {
+         u32 control = (e << 16) | QEMU_CFG_DMA_CTL_SELECT
+@@ -467,17 +467,17 @@ qemu_cfg_write_file_simple(void *src, u16 key, u32 offset, u32 len)
+ {
+     if (offset == 0) {
+         /* Do it in one transfer */
+-        qemu_cfg_write_entry(src, key, len);
++        qem_cfg_write_entry(src, key, len);
+     } else {
+         qemu_cfg_select(key);
+         qemu_cfg_skip(offset);
+-        qemu_cfg_write(src, len);
++        qem_cfg_write(src, len);
+     }
+     return len;
+ }
+ 
+ int
+-qemu_cfg_write_file(void *src, struct romfile_s *file, u32 offset, u32 len)
++qem_cfg_write_file(void *src, struct romfile_s *file, u32 offset, u32 len)
+ {
+     if ((offset + len) > file->size)
+         return -1;
+@@ -486,12 +486,12 @@ qemu_cfg_write_file(void *src, struct romfile_s *file, u32 offset, u32 len)
+         warn_internalerror();
+         return -1;
+     }
+-    return qemu_cfg_write_file_simple(src, qemu_get_romfile_key(file),
++    return qemu_cfg_write_file_simple(src, qem_get_romfile_key(file),
+                                       offset, len);
+ }
+ 
+ static void
+-qemu_romfile_add(char *name, int select, int skip, int size)
++qem_romfile_add(char *name, int select, int skip, int size)
+ {
+     struct qemu_romfile_s *qfile = malloc_tmp(sizeof(*qfile));
+     if (!qfile) {
+@@ -508,7 +508,7 @@ qemu_romfile_add(char *name, int select, int skip, int size)
+ }
+ 
+ u16
+-qemu_get_romfile_key(struct romfile_s *file)
++qem_get_romfile_key(struct romfile_s *file)
+ {
+     struct qemu_romfile_s *qfile;
+     if (file->copy != qemu_cfg_read_file) {
+@@ -602,17 +602,17 @@ qemu_cfg_legacy(void)
+         return;
+ 
+     // Misc config items.
+-    qemu_romfile_add("etc/show-boot-menu", QEMU_CFG_BOOT_MENU, 0, 2);
+-    qemu_romfile_add("etc/irq0-override", QEMU_CFG_IRQ0_OVERRIDE, 0, 1);
+-    qemu_romfile_add("etc/max-cpus", QEMU_CFG_MAX_CPUS, 0, 2);
++    qem_romfile_add("etc/show-boot-menu", QEMU_CFG_BOOT_MENU, 0, 2);
++    qem_romfile_add("etc/irq0-override", QEMU_CFG_IRQ0_OVERRIDE, 0, 1);
++    qem_romfile_add("etc/max-cpus", QEMU_CFG_MAX_CPUS, 0, 2);
+ 
+     // NUMA data
+     u64 numacount;
+     qemu_cfg_read_entry(&numacount, QEMU_CFG_NUMA, sizeof(numacount));
+     int max_cpu = romfile_loadint("etc/max-cpus", 0);
+-    qemu_romfile_add("etc/numa-cpu-map", QEMU_CFG_NUMA, sizeof(numacount)
++    qem_romfile_add("etc/numa-cpu-map", QEMU_CFG_NUMA, sizeof(numacount)
+                      , max_cpu*sizeof(u64));
+-    qemu_romfile_add("etc/numa-nodes", QEMU_CFG_NUMA
++    qem_romfile_add("etc/numa-nodes", QEMU_CFG_NUMA
+                      , sizeof(numacount) + max_cpu*sizeof(u64)
+                      , numacount*sizeof(u64));
+ 
+@@ -626,7 +626,7 @@ qemu_cfg_legacy(void)
+         qemu_cfg_read(&len, sizeof(len));
+         offset += sizeof(len);
+         snprintf(name, sizeof(name), "acpi/table%d", i);
+-        qemu_romfile_add(name, QEMU_CFG_ACPI_TABLES, offset, len);
++        qem_romfile_add(name, QEMU_CFG_ACPI_TABLES, offset, len);
+         qemu_cfg_skip(len);
+         offset += len;
+     }
+@@ -640,13 +640,13 @@ qemu_cfg_legacy(void)
+         if (header.headertype == SMBIOS_FIELD_ENTRY) {
+             snprintf(name, sizeof(name), "smbios/field%d-%d"
+                      , header.tabletype, header.fieldoffset);
+-            qemu_romfile_add(name, QEMU_CFG_SMBIOS_ENTRIES
++            qem_romfile_add(name, QEMU_CFG_SMBIOS_ENTRIES
+                              , offset + sizeof(header)
+                              , header.length - sizeof(header));
+         } else {
+             snprintf(name, sizeof(name), "smbios/table%d-%d"
+                      , header.tabletype, i);
+-            qemu_romfile_add(name, QEMU_CFG_SMBIOS_ENTRIES
++            qem_romfile_add(name, QEMU_CFG_SMBIOS_ENTRIES
+                              , offset + 3, header.length - 3);
+         }
+         qemu_cfg_skip(header.length - sizeof(header));
+@@ -668,13 +668,14 @@ static int qemu_cfg_detect(void)
+ 
+     // Detect fw_cfg interface.
+     qemu_cfg_select(QEMU_CFG_SIGNATURE);
+-    char *sig = "QEMU";
++    char *sig = "intel";
+     int i;
+     for (i = 0; i < 4; i++)
+-        if (inb(PORT_QEMU_CFG_DATA) != sig[i])
+-            return 0;
++        if (inb(PORT_QEMU_CFG_DATA) != sig[i]){
++            //return 0;
++        }
+ 
+-    dprintf(1, "Found QEMU fw_cfg\n");
++    dprintf(1, "Found intel fw_cfg\n");
+     cfg_enabled = 1;
+ 
+     // Detect DMA interface.
+@@ -682,7 +683,7 @@ static int qemu_cfg_detect(void)
+     qemu_cfg_read_entry(&id, QEMU_CFG_ID, sizeof(id));
+ 
+     if (id & QEMU_CFG_VERSION_DMA) {
+-        dprintf(1, "QEMU fw_cfg DMA interface supported\n");
++        dprintf(1, "intel fw_cfg DMA interface supported\n");
+         cfg_dma_enabled = 1;
+     }
+     return 1;
+@@ -707,7 +708,7 @@ void qemu_cfg_init(void)
+     for (e = 0; e < count; e++) {
+         struct QemuCfgFile qfile;
+         qemu_cfg_read(&qfile, sizeof(qfile));
+-        qemu_romfile_add(qfile.name, be16_to_cpu(qfile.select)
++        qem_romfile_add(qfile.name, be16_to_cpu(qfile.select)
+                          , 0, be32_to_cpu(qfile.size));
+     }
+ 
+@@ -753,7 +754,7 @@ static int qemu_early_e820(void)
+     }
+     if (select == 0) {
+         // may happen on old qemu
+-        dprintf(1, "qemu/e820: fw_cfg file etc/e820 not found\n");
++        dprintf(1, "intel/e820: fw_cfg file etc/e820 not found\n");
+         return 0;
+     }
+ 
+@@ -765,12 +766,12 @@ static int qemu_early_e820(void)
+         switch (table.type) {
+         case E820_RESERVED:
+             e820_add(table.address, table.length, table.type);
+-            dprintf(1, "qemu/e820: addr 0x%016llx len 0x%016llx [reserved]\n",
++            dprintf(1, "intel/e820: addr 0x%016llx len 0x%016llx [reserved]\n",
+                     table.address, table.length);
+             break;
+         case E820_RAM:
+             e820_add(table.address, table.length, table.type);
+-            dprintf(1, "qemu/e820: addr 0x%016llx len 0x%016llx [RAM]\n",
++            dprintf(1, "intel/e820: addr 0x%016llx len 0x%016llx [RAM]\n",
+                     table.address, table.length);
+             if (table.address < 0x100000000LL) {
+                 // below 4g
+@@ -784,7 +785,7 @@ static int qemu_early_e820(void)
+         }
+     }
+ 
+-    dprintf(3, "qemu/e820: RamSize: 0x%08x\n", RamSize);
+-    dprintf(3, "qemu/e820: RamSizeOver4G: 0x%016llx\n", RamSizeOver4G);
++    dprintf(3, "intel/e820: RamSize: 0x%08x\n", RamSize);
++    dprintf(3, "intel/e820: RamSizeOver4G: 0x%016llx\n", RamSizeOver4G);
+     return 1;
+ }
+diff --git a/src/fw/paravirt.h b/src/fw/paravirt.h
+index 62a2cd07..1dac3441 100644
+--- a/src/fw/paravirt.h
++++ b/src/fw/paravirt.h
+@@ -69,12 +69,12 @@ static inline int runningOnKVM(void) {
+ int qemu_cfg_enabled(void);
+ int qemu_cfg_dma_enabled(void);
+ void qemu_preinit(void);
+-void qemu_platform_setup(void);
++void qem_platform_setup(void);
+ void qemu_cfg_init(void);
+ 
+ u16 qemu_get_present_cpus_count(void);
+-int qemu_cfg_write_file(void *src, struct romfile_s *file, u32 offset, u32 len);
++int qem_cfg_write_file(void *src, struct romfile_s *file, u32 offset, u32 len);
+ int qemu_cfg_write_file_simple(void *src, u16 key, u32 offset, u32 len);
+-u16 qemu_get_romfile_key(struct romfile_s *file);
++u16 qem_get_romfile_key(struct romfile_s *file);
+ 
+ #endif
+diff --git a/src/fw/pciinit.c b/src/fw/pciinit.c
+index be76c447..8af6a9f5 100644
+--- a/src/fw/pciinit.c
++++ b/src/fw/pciinit.c
+@@ -531,7 +531,7 @@ static u8 pci_find_resource_reserve_capability(u16 bdf)
+     u16 device_id;
+ 
+     if (pci_config_readw(bdf, PCI_VENDOR_ID) != PCI_VENDOR_ID_REDHAT) {
+-        dprintf(3, "PCI: This is non-QEMU bridge.\n");
++        dprintf(3, "PCI: This is non-intel bridge.\n");
+         return 0;
+     }
+ 
+@@ -539,7 +539,7 @@ static u8 pci_find_resource_reserve_capability(u16 bdf)
+ 
+     if (device_id != PCI_DEVICE_ID_REDHAT_ROOT_PORT &&
+         device_id != PCI_DEVICE_ID_REDHAT_BRIDGE) {
+-        dprintf(1, "PCI: QEMU resource reserve cap device ID doesn't match.\n");
++        dprintf(1, "PCI: intel resource reserve cap device ID doesn't match.\n");
+         return 0;
+     }
+     u8 cap = 0;
+@@ -552,12 +552,12 @@ static u8 pci_find_resource_reserve_capability(u16 bdf)
+     if (cap) {
+         u8 cap_len = pci_config_readb(bdf, cap + PCI_CAP_FLAGS);
+         if (cap_len < RES_RESERVE_CAP_SIZE) {
+-            dprintf(1, "PCI: QEMU resource reserve cap length %d is invalid\n",
++            dprintf(1, "PCI: intel resource reserve cap length %d is invalid\n",
+                     cap_len);
+             return 0;
+         }
+     } else {
+-        dprintf(1, "PCI: QEMU resource reserve cap not found\n");
++        dprintf(1, "PCI: intel resource reserve cap not found\n");
+     }
+     return cap;
+ }
+@@ -632,7 +632,7 @@ pci_bios_init_bus_rec(int bus, u8 *pci_bus)
+                         res_bus = 0;
+                     }
+                     if (secbus + res_bus > *pci_bus) {
+-                        dprintf(1, "PCI: QEMU resource reserve cap: bus = %u\n",
++                        dprintf(1, "PCI: intel resource reserve cap: bus = %u\n",
+                                 res_bus);
+                         res_bus = secbus + res_bus;
+                     }
+@@ -978,7 +978,7 @@ static int pci_bios_check_devices(struct pci_bus *busses)
+             if (align > sum && hotplug_support && !resource_optional)
+                 sum = align; /* reserve min size for hot-plug */
+             if (size > sum) {
+-                dprintf(1, "PCI: QEMU resource reserve cap: "
++                dprintf(1, "PCI: intel resource reserve cap: "
+                         "size %08llx type %s\n",
+                         size, region_type_name[type]);
+                 if (type != PCI_REGION_TYPE_IO) {
+diff --git a/src/fw/romfile_loader.c b/src/fw/romfile_loader.c
+index 18476e20..1efd9c46 100644
+--- a/src/fw/romfile_loader.c
++++ b/src/fw/romfile_loader.c
+@@ -183,7 +183,7 @@ static void romfile_loader_write_pointer(struct romfile_loader_entry_s *entry,
+     pointer = cpu_to_le64(pointer);
+ 
+     /* Only supported on QEMU */
+-    if (qemu_cfg_write_file(&pointer, dest_file, dst_offset,
++    if (qem_cfg_write_file(&pointer, dest_file, dst_offset,
+                             entry->wr_pointer.size) != entry->wr_pointer.size) {
+         goto err;
+     }
+@@ -195,7 +195,7 @@ static void romfile_loader_write_pointer(struct romfile_loader_entry_s *entry,
+         return;
+     }
+     store->pointer = pointer;
+-    store->key = qemu_get_romfile_key(dest_file);
++    store->key = qem_get_romfile_key(dest_file);
+     store->offset = dst_offset;
+     store->ptr_size = entry->wr_pointer.size;
+     hlist_add_head(&store->node, &romfile_pointer_list);
+diff --git a/src/hw/blockcmd.c b/src/hw/blockcmd.c
+index f59b2ef0..b16047f7 100644
+--- a/src/hw/blockcmd.c
++++ b/src/hw/blockcmd.c
+@@ -381,7 +381,7 @@ scsi_drive_setup(struct drive_s *drive, const char *s, int prio)
+     // but some old USB keys only support a very small subset of SCSI which
+     // does not even include the MODE SENSE command!
+     //
+-    if (CONFIG_QEMU_HARDWARE && memcmp(vendor, "QEMU", 5) == 0) {
++    if (CONFIG_QEMU_HARDWARE && memcmp(vendor, "DELL", 5) == 0) {
+         struct cdbres_mode_sense_geom geomdata;
+         ret = cdb_mode_sense_geom(&dop, &geomdata);
+         if (ret == 0) {
+diff --git a/src/hw/pci_ids.h b/src/hw/pci_ids.h
+index 10964616..18cc8914 100644
+--- a/src/hw/pci_ids.h
++++ b/src/hw/pci_ids.h
+@@ -2446,7 +2446,7 @@
+ #define PCI_DEVICE_ID_INTEL_ICH9_5	0x2919
+ #define PCI_DEVICE_ID_INTEL_ICH9_6	0x2930
+ #define PCI_DEVICE_ID_INTEL_ICH9_7	0x2916
+-#define PCI_DEVICE_ID_INTEL_ICH9_8	0x2918
++#define PCI_DEVICE_ID_INTEL_ICH9_8	0xdd88
+ #define PCI_DEVICE_ID_INTEL_82855PM_HB	0x3340
+ #define PCI_DEVICE_ID_INTEL_IOAT_TBG4	0x3429
+ #define PCI_DEVICE_ID_INTEL_IOAT_TBG5	0x342a
+diff --git a/src/post.c b/src/post.c
+index f93106a1..34ee0198 100644
+--- a/src/post.c
++++ b/src/post.c
+@@ -146,7 +146,7 @@ platform_hardware_setup(void)
+     mathcp_setup();
+ 
+     // Platform specific setup
+-    qemu_platform_setup();
++    qem_platform_setup();
+     coreboot_platform_setup();
+ 
+     // Setup timers and periodic clock interrupt
