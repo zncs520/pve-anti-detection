@@ -70,10 +70,10 @@ dpkg -i pve-qemu-kvm_10.xxx_amd64.deb
 dpkg -i pve-edk2-firmware-ovmf_xxx.deb
 ```
 
-### Reboot After Installation
+### don't need Reboot After Installation
 
 ```bash
-reboot
+
 ```
 
 ### Restore Official Packages (If Needed)
