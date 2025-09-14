@@ -64,9 +64,8 @@ dpkg -i pve-qemu-kvm_10.xxx_amd64.deb xxx代表你具体下载的版本
 dpkg -i pve-edk2-firmware-ovmf_xxx.deb
 
 
-安装完成后请reboot机器
+安装完成后不需要reboot机器
 
-reboot
 
 如果你要恢复官方包只需要运行下面两个命令就能恢复官方包
 
@@ -149,6 +148,7 @@ https://www.bilibili.com/read/readlist/rl758108 pve反虚拟化检测玩游戏
 ## Star History
 
 [![Star History Chart](https://api.star-history.com/svg?repos=lixiaoliu666/pve-anti-detection&type=Date)](https://www.star-history.com/#lixiaoliu666/pve-anti-detection&Date)
+
 
 
 
