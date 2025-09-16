@@ -118,7 +118,7 @@ sed -i 's/0x51454d5520434647ULL/0x4155535520434647ULL/g' pc-bios/optionrom/optio
 sed -i 's/"QEMU/"'${brand}'/g' pc-bios/s390-ccw/virtio-scsi.h
 sed -i 's/"QEMU/"'${brand}'/g' roms/seabios/src/fw/ssdt-misc.dsl
 sed -i 's/"QEMU/"'${brand}'/g' roms/seabios-hppa/src/fw/ssdt-misc.dsl
-sed -i 's/KVMKVMKVM\\0\\0\\0/GenuineIntel/g' target/i386/kvm/kvm.c
+sed -i 's/KVMKVMKVM\\0\\0\\0/\\1\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0/g' target/i386/kvm/kvm.c
 sed -i 's/QEMUQEMUQEMUQEMU/ASUSASUSASUSASUS/g' target/s390x/tcg/misc_helper.c
 sed -i 's/"QEMU/"'${brand}'/g' target/s390x/tcg/misc_helper.c
 sed -i 's/"KVM/"ATX/g' target/s390x/tcg/misc_helper.c
