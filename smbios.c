@@ -873,7 +873,7 @@ static void smbios_build_type_4_table(MachineState *ms, unsigned instance,
     t->max_speed = cpu_to_le16(5500); //5.5ghz
     t->current_speed = cpu_to_le16(type4.current_speed);
     t->status = 0x41; /* Socket populated, CPU enabled */
-    t->processor_upgrade = 0x01; /* Other */
+    t->processor_upgrade = 0x40; /* LGA1700 */
     t->l1_cache_handle = cpu_to_le16(0x51); /* N/A */
     t->l2_cache_handle = cpu_to_le16(0x52); /* N/A */
     t->l3_cache_handle = cpu_to_le16(0x53); /* N/A */
