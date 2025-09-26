@@ -858,7 +858,7 @@ static void smbios_build_type_4_table(MachineState *ms, unsigned instance,
     snprintf(sock_str, sizeof(sock_str), "%s%2x", type4.sock_pfx, instance);
     SMBIOS_TABLE_SET_STR(4, socket_designation_str, "LGA1700"); //李晓流 dds666 modify 直接改成12代的LGA1700 接口
     t->processor_type = 0x03; /* CPU */
-    t->processor_family = 0xC6; /* use Processor Family 2 field */ //李晓流 dds666 modify 0xC6代表 Intel® Core™ i7 processor
+    t->processor_family = 0x01; /* Other use Processor Family 2 field */ //李晓流 dds666 modify 0xC6代表 Intel® Core™ i7 processor
     SMBIOS_TABLE_SET_STR(4, processor_manufacturer_str, type4.manufacturer);
     if (type4.processor_id == 0) {
         t->processor_id[0] = cpu_to_le32(smbios_cpuid_version);
@@ -890,7 +890,7 @@ static void smbios_build_type_4_table(MachineState *ms, unsigned instance,
     t->thread_count = (threads_per_socket > 255) ? 0xFF : threads_per_socket;
 
     t->processor_characteristics = cpu_to_le16(0xFC); /* Unknown */ //李晓流 dds666 modify 0x4 计算得到代表64-bit Capable
-    t->processor_family2 = cpu_to_le16(0xC6); //李晓流 dds666 modify 和t->processor_family保持一致不一致都可以
+    t->processor_family2 = cpu_to_le16(0x01); //Other 李晓流 dds666 modify 和t->processor_family保持一致不一致都可以
 
     if (tbl_len == SMBIOS_TYPE_4_LEN_V30) {
         t->core_count2 = t->core_enabled2 = cpu_to_le16(cores_per_socket);
