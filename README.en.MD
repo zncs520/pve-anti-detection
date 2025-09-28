@@ -4,7 +4,7 @@ Language [<a href="README.md">中文</a>] | [<a href="README.en.MD">English</a>]
 
 **Authors:** Li Xiaoliu & DadaShuai666
 
-Chat QQ Groups `25438194` with entry codes `666`
+Chat QQ Groups `363074875` with entry codes `666`
 
 - **Li Xiaolius Bilibili:** [https://space.bilibili.com/565938745](https://space.bilibili.com/565938745)
 - **DadaShuai666s Bilibili:** [https://space.bilibili.com/14205798](https://space.bilibili.com/14205798)
