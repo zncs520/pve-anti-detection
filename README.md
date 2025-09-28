@@ -2,7 +2,7 @@ Language [<a href="README.md">中文</a>] | [<a href="README.en.MD">English</a>]
 
 李晓流 & 大大帅666 作品
 
-qq群聊天 25438194 进群暗号 666
+qq群聊天 363074875 进群暗号 666
 
 李晓流 b站地址：https://space.bilibili.com/565938745
 
@@ -148,6 +148,7 @@ https://www.bilibili.com/read/readlist/rl758108 pve反虚拟化检测玩游戏
 ## Star History
 
 [![Star History Chart](https://api.star-history.com/svg?repos=lixiaoliu666/pve-anti-detection&type=Date)](https://www.star-history.com/#lixiaoliu666/pve-anti-detection&Date)
+
 
 
 
