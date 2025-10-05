@@ -26,7 +26,7 @@ pve网页 数据中心-》选项-》MAC地址前缀你先改成D8:FC:93
 
 ！！！！！！！！！！！本项目都不对scsi以及virtio设备有使用限制！！！！！！！！！！！！！！！！！！！！！！！！！！！！
 
-我也在b站这个专栏发布全部的源码和教程如何编译源码，是整个系列的发布： https://www.bilibili.com/read/readlist/rl758108 pve反虚拟化检测玩游戏
+我也在b站这个专栏发布全部的源码和教程如何编译源码，是整个系列的发布： https://www.bilibili.com/read/readlist/rl758108 pve虚拟机模拟真实机器防检测
 
 2、正式开始
 
@@ -142,12 +142,13 @@ args: -acpitable file=/root/ssdt.aml -cpu host,hypervisor=off,vmware-cpuid-freq=
 7、https://www.bilibili.com/read/cv26245305 
 
 该文章中开源内容外的内容全部开源，将在这个系列全部公布: 
-https://www.bilibili.com/read/readlist/rl758108 pve反虚拟化检测玩游戏
+https://www.bilibili.com/read/readlist/rl758108 pve虚拟机模拟真实机器防检测
 
 本项目抛砖引玉，欢迎fork本项目后自我继续折腾！！！
 ## Star History
 
 [![Star History Chart](https://api.star-history.com/svg?repos=lixiaoliu666/pve-anti-detection&type=Date)](https://www.star-history.com/#lixiaoliu666/pve-anti-detection&Date)
+
 
 
 
