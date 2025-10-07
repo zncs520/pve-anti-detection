@@ -34,6 +34,7 @@ cp qemu-autoGenPatch.patch ../
 #bash ../../3StrongEnd.sh 		# 3StrongEnd.sh
 
 cd ..
+make clean
 make #改为一次编译
 cd qemu/
 git checkout .
