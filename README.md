@@ -8,7 +8,7 @@ qq群聊天 363074875 进群暗号 666
 
 大大帅666 b站地址 https://space.bilibili.com/14205798
 
-20250906更新：已取消主板型号随机（可自己定制），取消内存序列号随机（可自己定制），ide sata硬盘自己设置serial=20位序列号进行定制固定（不固定内部默认还是随机）。n卡独显直通43错误请二者选其一：ssdt.aml（不带电池）和ssdt-battery.aml（带个虚拟电池），台式机u选无电池，笔记本u选有电池，加载ssdt后43错误就行。
+20250906更新：已取消主板型号随机（可自己定制），取消内存序列号随机（可自己定制），ide sata硬盘自己设置serial=20位序列号进行定制固定（不固定内部默认还是随机）。n卡独显直通43错误请二者选其一：ssdt.aml（不带电池）和ssdt-battery.aml（带个虚拟电池），台式机u选无电池，笔记本u选有电池，加载ssdt后43错误解决了就行。
 
 20250805更新：增加acpi添加ssdt功能，ssdt-battery.aml里有个虚拟电池（可显示）ssdt.aml无虚拟电池、虚拟cpu和主板温度（可显示）、虚拟风扇（无法显示），你可以使用https://github.com/ic005k/Xiasl 直接对ssdt.aml（ssdt.aml==ssdt.dat 后缀名区别而已）进行自我编辑增加修改功能
 
@@ -148,6 +148,7 @@ https://www.bilibili.com/read/readlist/rl758108 pve虚拟机模拟真实机器�
 ## Star History
 
 [![Star History Chart](https://api.star-history.com/svg?repos=lixiaoliu666/pve-anti-detection&type=Date)](https://www.star-history.com/#lixiaoliu666/pve-anti-detection&Date)
+
 
 
 
