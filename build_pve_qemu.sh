@@ -42,11 +42,11 @@ cd ..
 
 # strong reset project data
 rm -Rf qemu/pc-bios
+git reset --hard master
 git submodule update --init --recursive --force
 git checkout .
 cd qemu/
 git checkout .
 git submodule update --init --recursive --force
 git checkout .
-git reset --hard master
 cd ../..
