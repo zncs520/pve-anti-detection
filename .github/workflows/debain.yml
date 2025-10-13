@@ -1,4 +1,4 @@
-name: Build pve qemu anti detection deb
+name: Build debian qemu anti detection binary
 
 on:
   push:
