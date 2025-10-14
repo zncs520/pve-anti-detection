@@ -37,6 +37,7 @@ cp qemu-autoGenPatch.patch ../
 make clean
 make #改为一次编译
 cp build/qemu-system-x86_64 ../
+cp pc-bios/bios-256k.bin ../
 cd ..
 git checkout .
 
