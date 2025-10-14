@@ -19,8 +19,8 @@ jobs:
       # Step 0: 安装git
       - name: Install git on container
         run: |
-          apt update
-          apt install -y git
+          sudo apt update
+          sudo apt install -y git
           
       # Step 1: 检出代码
       - name: checkout
@@ -31,14 +31,14 @@ jobs:
       # Step 2: 安装构建所需的软件包
       - name: Install base package
         run: |
-          apt update && apt install build-* bc dosfstools iasl mtools nasm \
+          sudo apt update && apt install build-* bc dosfstools iasl mtools nasm \
           python3 python3-pexpect qemu-utils uuid-dev xorriso curl -y
 
       # Step 3: 构建 deb 文件
       - name: Build
         run: |
           uname -a
-          bash build_debain_qemu.sh
+          sudo bash build_debain_qemu.sh
           mkdir -p artifacts
           find ./ -name "qemu-system-x86_64" -exec cp {} ./artifacts/ \;
           find ./ -name "*autoGenPatch.patch" -exec cp {} ./artifacts/ \;
