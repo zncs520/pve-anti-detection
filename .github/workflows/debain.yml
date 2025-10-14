@@ -18,7 +18,7 @@ jobs:
       TZ: Asia/Shanghai
     steps:
       # Step 0: 安装git
-      - name: 0.Install git on container
+      - name: 0.Install git
         run: |
           apt update
           apt install -y git
@@ -39,7 +39,6 @@ jobs:
       # Step 3: 构建 deb 文件
       - name: 3.Build
         run: |
-          uname -a
           bash build_debain_qemu.sh
           mkdir -p artifacts
           find ./ -name "qemu-system-x86_64" -exec cp {} ./artifacts/ \;
