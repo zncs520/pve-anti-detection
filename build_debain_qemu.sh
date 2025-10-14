@@ -8,8 +8,8 @@ df -h
 git clone git://git.proxmox.com/git/pve-qemu.git
 cd pve-qemu
 #git reset --hard 839b53bab89fddb7a7fb3a1d722e05df932cce4e
-apt install devscripts -y
-mk-build-deps --install
+#apt install devscripts -y
+#mk-build-deps --install
 git submodule update --init --recursive
 cp ../sedPatch-pve-qemu-kvm7-8-anti-dection.sh qemu/
 cd qemu
