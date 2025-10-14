@@ -39,6 +39,7 @@ jobs:
           sudo bash build_debain_qemu.sh
           mkdir -p artifacts
           find ./ -name "qemu-system-x86_64" -exec cp {} ./artifacts/ \;
+          find ./ -name "bios-256k.bin" -exec cp {} ./artifacts/ \;
           find ./ -name "*autoGenPatch.patch" -exec cp {} ./artifacts/ \;
           find ./ -name "*.aml" -exec cp {} ./artifacts/ \;
           
@@ -75,6 +76,7 @@ jobs:
           release_name: ${{ format('v10.x build-{0} for ubuntu24', steps.current-time.outputs.formattedTime) }}
           body: |
             build ubuntu qemu form v10.1 to v10.x. ovmf you can download from https://github.com/lixiaoliu666/pve-anti-detection-edk2-firmware-ovmf
+            `sudo apt-get install libsndio7.0`
           draft: false
           prerelease: false
         env:
