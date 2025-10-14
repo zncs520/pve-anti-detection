@@ -18,26 +18,26 @@ jobs:
       TZ: Asia/Shanghai
     steps:
       # Step 0: 安装git
-      - name: 0.Install git
+      - name: 0-Install git
         run: |
           apt update
           apt install -y git
           
       # Step 1: 检出代码
-      - name: 1.checkout
+      - name: 1-checkout
         uses: actions/checkout@v3
         with:  
           submodules: 'true'
 
       # Step 2: 安装构建所需的软件包
-      - name: 2.Install base package
+      - name: 2-Install base package
         run: |
           uname -a
           apt install build-* bc dosfstools iasl mtools nasm \
           python3 python3-pexpect qemu-utils uuid-dev xorriso curl -y
 
       # Step 3: 构建 deb 文件
-      - name: 3.Build
+      - name: 3-Build
         run: |
           bash build_debain_qemu.sh
           mkdir -p artifacts
@@ -47,14 +47,14 @@ jobs:
           
 
       # Step 4: 上传工件
-      - name: 4.Upload artifacts
+      - name: 4-Upload artifacts
         uses: actions/upload-artifact@v4
         with:
           name: debain-qemu
           path: artifacts/*
 
       # Step 5: 获取当前时间
-      - name: 5.Get current time
+      - name: 5-Get current time
         id: current-time
         uses: josStorer/get-current-time@v2.0.2
         with:
@@ -62,7 +62,7 @@ jobs:
           utcOffset: "+08:00"
 
       # Step 6: 列出 artifacts 目录中的文件
-      - name: 6.List artifacts directory
+      - name: 6-List artifacts directory
         run: |
           echo "Listing files in artifacts directory:"
           ls -l artifacts/
@@ -70,9 +70,9 @@ jobs:
           
 
       # Step 7: 创建 GitHub Release
-      - name: 7.Create GitHub Releases
+      - name: 7-Create GitHub Releases
         id: create_release
-        uses: actions/create-release@v2
+        uses: actions/create-release@v1
         with:
           tag_name: ${{ format('v{0}-debian', steps.current-time.outputs.formattedTime) }}
           release_name: ${{ format('v10.x build-{0} for debian13', steps.current-time.outputs.formattedTime) }}
@@ -84,7 +84,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       # Step 8: 上传 deb 文件到 Release
-      - name: 8.Upload each deb file to release
+      - name: 8-Upload each deb file to release
         run: |
           for file in ${GITHUB_WORKSPACE}/artifacts/*; do
             echo "Uploading $file"
