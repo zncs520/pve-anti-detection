@@ -17,8 +17,8 @@ jobs:
       # Step 0: 安装git
       - name: Install git on container
         run: |
-          sudo apt update
-          sudo apt install -y git
+          apt update
+          apt install -y git
           
       # Step 1: 检出代码
       - name: checkout
