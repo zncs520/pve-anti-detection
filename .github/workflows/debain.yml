@@ -13,6 +13,7 @@ jobs:
       contents: write 
       packages: write 
       actions: write 
+      id-token: write  # 如需签名需要额外权限 
     container: debian:trixie
     env:
       TZ: Asia/Shanghai
