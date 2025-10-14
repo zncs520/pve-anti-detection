@@ -9,11 +9,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write 
-      packages: write 
-      actions: write
-      id-token: write  # 如需签名需要额外权限 
+    permissions: write-all
     env:
       TZ: Asia/Shanghai
     steps:
