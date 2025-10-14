@@ -73,7 +73,7 @@ jobs:
       # Step 7: 创建 GitHub Release
       - name: 7-Create GitHub Releases
         id: create_release
-        uses: actions/create-release@v2
+        uses: actions/create-release@v1
         with:
           tag_name: ${{ format('v{0}-ubuntu', steps.current-time.outputs.formattedTime) }}
           release_name: ${{ format('v10.x build-{0} for ubuntu24', steps.current-time.outputs.formattedTime) }}
