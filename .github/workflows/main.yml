@@ -9,11 +9,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-24.04
-    permissions: 
-      contents: write 
-      packages: write 
-      actions: write 
-      id-token: write  # 如需签名需要额外权限 
+    permissions: write-all
     container: ghcr.io/lixiaoliu666/pve9docker:main
     env:
       TZ: Asia/Shanghai
