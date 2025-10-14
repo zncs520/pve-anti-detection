@@ -76,7 +76,9 @@ jobs:
           release_name: ${{ format('v10.x build-{0} for ubuntu24', steps.current-time.outputs.formattedTime) }}
           body: |
             build ubuntu qemu form v10.1 to v10.x. ovmf you can download from https://github.com/lixiaoliu666/pve-anti-detection-edk2-firmware-ovmf
+            replace qemu-system-x86_64 to /usr/bin/qemu-system-x86_64 and run
             `sudo apt-get install libsndio7.0`
+            `qemu-system-x86_64 --version`
           draft: false
           prerelease: false
         env:
