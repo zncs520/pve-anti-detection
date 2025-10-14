@@ -61,7 +61,6 @@ jobs:
           echo "Listing files in artifacts directory:"
           ls -l artifacts/
           cd artifacts
-          rm *build*
           rm *dbgsym*
 
       # Step 7: 创建 GitHub Release
