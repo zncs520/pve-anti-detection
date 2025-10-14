@@ -71,8 +71,8 @@ jobs:
         id: create_release
         uses: actions/create-release@v1
         with:
-          tag_name: ${{ format('v{0}', steps.current-time.outputs.formattedTime) }}
-          release_name: ${{ format('v10.x build-{0}', steps.current-time.outputs.formattedTime) }}
+          tag_name: ${{ format('v{0}-debian', steps.current-time.outputs.formattedTime) }}
+          release_name: ${{ format('v10.x build-{0} for debian13', steps.current-time.outputs.formattedTime) }}
           body: |
             build debian qemu form v10.1 to v10.x. ovmf you can download from https://github.com/lixiaoliu666/pve-anti-detection-edk2-firmware-ovmf
           draft: false
