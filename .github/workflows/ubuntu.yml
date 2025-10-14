@@ -12,7 +12,8 @@ jobs:
     permissions:
       contents: write 
       packages: write 
-      actions: write 
+      actions: write
+      id-token: write  # 如需签名需要额外权限 
     env:
       TZ: Asia/Shanghai
     steps:
