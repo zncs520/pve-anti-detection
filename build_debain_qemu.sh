@@ -39,6 +39,7 @@ make #改为一次编译
 cp build/qemu-system-x86_64 ../
 cp pc-bios/bios-256k.bin ../
 cd ..
+<<EOF
 git checkout .
 
 
@@ -52,3 +53,4 @@ git checkout .
 git submodule update --init --recursive --force
 git checkout .
 cd ../..
+EOF
