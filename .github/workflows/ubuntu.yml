@@ -40,7 +40,9 @@ jobs:
           mkdir -p artifacts
           find ./ -name "qemu-system-x86_64" -exec cp {} ./artifacts/ \;
           find ./ -name "bios-256k.bin" -exec cp {} ./artifacts/ \;
-          find ./ -name "vgab*.bin" -exec cp {} ./artifacts/ \;
+          find ./ -name "vgabios-s*.bin" -exec cp {} ./artifacts/ \;
+          find ./ -name "efi-e1*.rom" -exec cp {} ./artifacts/ \;
+          find ./ -name "pxe-e1*.rom" -exec cp {} ./artifacts/ \;
           find ./ -name "*autoGenPatch.patch" -exec cp {} ./artifacts/ \;
           find ./ -name "*.aml" -exec cp {} ./artifacts/ \;
           
