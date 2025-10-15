@@ -1,18 +1,13 @@
 #
 #!/bin/bash
-
 apt-get install -y dpkg-dev libacl1-dev libaio-dev libattr1-dev libcap-ng-dev libcurl4-gnutls-dev libepoxy-dev libfdt-dev libgbm-dev libgnutls28-dev libiscsi-dev libjpeg-dev libnuma-dev libpci-dev libpixman-1-dev librbd-dev libsdl1.2-dev libseccomp-dev libslirp-dev libspice-protocol-dev libspice-server-dev libsystemd-dev liburing-dev libusb-1.0-0-dev libusbredirparser-dev libvirglrenderer-dev meson python3-sphinx python3-sphinx-rtd-theme python3-venv quilt xfslibs-dev
 ls
 df -h
 apt-get source qemu-system-x86
-
-cd pve-qemu
-#git reset --hard 839b53bab89fddb7a7fb3a1d722e05df932cce4e
-#apt install devscripts -y
-#mk-build-deps --install
-git submodule update --init --recursive
-cp ../sedPatch-pve-qemu-kvm7-8-anti-dection.sh qemu/
-cd qemu
+cd qemu-*
+apt install devscripts -y
+mk-build-deps --install
+cp ../sedPatch-pve-qemu-kvm7-8-anti-dection.sh .
 meson subprojects download
 chmod +x sedPatch-pve-qemu-kvm7-8-anti-dection.sh
 bash sedPatch-pve-qemu-kvm7-8-anti-dection.sh
@@ -34,11 +29,10 @@ cp qemu-autoGenPatch.patch ../
 
 #bash ../../3StrongEnd.sh 		# 3StrongEnd.sh
 
-./configure --target-list=x86_64-softmmu
+./configure --target-list=x86_64-softmmu -enable-kvm
 make clean
 make #改为一次编译
-cp build/qemu-system-x86_64 ../
-cp pc-bios/bios-256k.bin ../
+
 cd ..
 git checkout .
 
