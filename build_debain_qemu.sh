@@ -33,7 +33,7 @@ cp qemu-autoGenPatch.patch ../
 
 #bash ../../3StrongEnd.sh 		# 3StrongEnd.sh
 
-./configure --target-list=x86_64-softmmu
+./configure --prefix=/usr/local --target-list=x86_64-softmmu --enable-kvm
 make clean
 make #改为一次编译
 cp build/qemu-system-x86_64 ../
