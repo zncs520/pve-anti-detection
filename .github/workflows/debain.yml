@@ -80,6 +80,7 @@ jobs:
           body: |
             build debain qemu form v10.1 to v10.x.
             Only support UEFI,please set Virtual Machine Manager BIOS is UEFI
+            `sudo apt-get install virt-manager`
             `sudo cp qemu-system-x86_64 /usr/bin/`
             `sudo cp {bios-256k.bin,efi-e1000.rom,efi-e1000e.rom,vgabios-qxl.bin,vgabios-stdvga.bin} /usr/share/qemu/`
             `sudo apt-get install libsndio7.0`
