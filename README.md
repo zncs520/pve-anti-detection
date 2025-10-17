@@ -1,5 +1,7 @@
 Language [<a href="README.md">中文</a>] | [<a href="README.en.MD">English</a>] Thanks for https://github.com/mk990 translate。
 
+PVE Debain Ubuntu virtual machine emulates a physical machine to avoid(or anti) detection（pve Debian Ubuntu虚拟机模拟真实机器防检测）
+
 李晓流 & 大大帅666 作品
 
 qq群聊天 363074875 进群暗号 666
@@ -148,6 +150,7 @@ https://www.bilibili.com/read/readlist/rl758108 pve虚拟机模拟真实机器�
 ## Star History
 
 [![Star History Chart](https://api.star-history.com/svg?repos=lixiaoliu666/pve-anti-detection&type=Date)](https://www.star-history.com/#lixiaoliu666/pve-anti-detection&Date)
+
 
 
 
