@@ -1,4 +1,4 @@
-name: 3.Build ubuntu qemu anti detection binary
+name: 3.Build Ubuntu qemu anti detection binary
 
 on:
   push:
@@ -79,9 +79,9 @@ jobs:
           tag_name: ${{ format('v{0}-ubuntu', steps.current-time.outputs.formattedTime) }}
           release_name: ${{ format('v10.x build-{0} for ubuntu24', steps.current-time.outputs.formattedTime) }}
           body: |
-            build ubuntu qemu form v10.1 to v10.x.
+            build Ubuntu qemu form v10.1 to v10.x.
             support UEFI and Seabios,Virtual Machine Manager BIOS is UEFI better!
-            `sudo apt-get install virt-manager`
+            `sudo apt-get install virt-manager seabios ovmf`
             `sudo cp qemu-system-x86_64 /usr/bin/`
             `sudo cp {bios-256k.bin,bios.bin,efi-e1000.rom,efi-e1000e.rom,vgabios-qxl.bin,vgabios-stdvga.bin,efi-virtio.rom} /usr/share/qemu/`
             `sudo apt-get install libsndio7.0`
