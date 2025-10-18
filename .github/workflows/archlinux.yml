@@ -81,7 +81,7 @@ jobs:
           body: |
             build Archlinux qemu form v10.1 to v10.x.
             support UEFI and Seabios,Virtual Machine Manager BIOS is UEFI better!
-            `pacman -S virt-manager seabios ovmf qemu libvirt`
+            `pacman -S virt-manager seabios ovmf qemu libvirt virt-viewer bridge-utils dnsmasq`
             `sudo cp qemu-system-x86_64 /usr/bin/`
             `sudo cp {bios-256k.bin,bios.bin,efi-e1000.rom,efi-e1000e.rom,vgabios-qxl.bin,vgabios-stdvga.bin,efi-virtio.rom} /usr/share/qemu/`
             `sudo apt-get install libsndio7.0`
