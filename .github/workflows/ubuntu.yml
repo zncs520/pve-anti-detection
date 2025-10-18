@@ -39,7 +39,7 @@ jobs:
           sudo bash build_debain_qemu.sh
           mkdir -p artifacts
           find ./ -name "qemu-system-x86_64" -exec cp {} ./artifacts/ \;
-          find ./ -name "bios-256k.bin" -exec cp {} ./artifacts/ \;
+          find ./ -name "bios*.bin" -exec cp {} ./artifacts/ \;
           find ./ -name "vgabios-s*.bin" -exec cp {} ./artifacts/ \;
           find ./ -name "vgabios-q*.bin" -exec cp {} ./artifacts/ \;
           find ./ -name "efi-e1*.rom" -exec cp {} ./artifacts/ \;
@@ -82,7 +82,7 @@ jobs:
             Only support UEFI,please set Virtual Machine Manager BIOS is UEFI
             `sudo apt-get install virt-manager`
             `sudo cp qemu-system-x86_64 /usr/bin/`
-            `sudo cp {bios-256k.bin,efi-e1000.rom,efi-e1000e.rom,vgabios-qxl.bin,vgabios-stdvga.bin} /usr/share/qemu/`
+            `sudo cp {bios-256k.bin,bios.bin,efi-e1000.rom,efi-e1000e.rom,vgabios-qxl.bin,vgabios-stdvga.bin,efi-virtio.rom} /usr/share/qemu/`
             `sudo apt-get install libsndio7.0`
             `qemu-system-x86_64 --version`
             `qemu-system-x86_64`
