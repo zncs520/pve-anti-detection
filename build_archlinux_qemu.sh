@@ -1,7 +1,7 @@
 #
 #!/bin/bash
 
-pacman -Sy --noconfirm quilt base-devel git cmake make meson
+pacman -Sy --noconfirm quilt base-devel git cmake make meson python-sphinx python-sphinx_rtd_theme
 ls
 df -h
 git clone git://git.proxmox.com/git/pve-qemu.git
