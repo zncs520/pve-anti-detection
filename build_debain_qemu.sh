@@ -37,10 +37,11 @@ cp qemu-autoGenPatch.patch ../
 make clean
 make #改为一次编译
 cp build/qemu-system-x86_64 ../
-cp pc-bios/bios-256k.bin ../
+cp pc-bios/bios*.bin ../
 cp pc-bios/vgabios-s*.bin ../
 cp pc-bios/vgabios-q*.bin ../
 cp pc-bios/efi-e1*.rom ../
+cp pc-bios/efi-vi*.rom ../
 cd ..
 
 <<EOF
