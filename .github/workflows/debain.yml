@@ -43,6 +43,7 @@ jobs:
           find ./ -name "vgabios-s*.bin" -exec cp {} ./artifacts/ \;
           find ./ -name "vgabios-q*.bin" -exec cp {} ./artifacts/ \;
           find ./ -name "efi-e1*.rom" -exec cp {} ./artifacts/ \;
+          find ./ -name "efi-vi*.rom" -exec cp {} ./artifacts/ \;
           find ./ -name "*autoGenPatch.patch" -exec cp {} ./artifacts/ \;
           find ./ -name "*.aml" -exec cp {} ./artifacts/ \;
           
@@ -79,10 +80,10 @@ jobs:
           release_name: ${{ format('v10.x build-{0} for debian13', steps.current-time.outputs.formattedTime) }}
           body: |
             build debain qemu form v10.1 to v10.x.
-            Only support UEFI,please set Virtual Machine Manager BIOS is UEFI
+            support UEFI and Seabios,Virtual Machine Manager BIOS is UEFI better!
             `sudo apt-get install virt-manager`
             `sudo cp qemu-system-x86_64 /usr/bin/`
-            `sudo cp {bios-256k.bin,efi-e1000.rom,efi-e1000e.rom,vgabios-qxl.bin,vgabios-stdvga.bin} /usr/share/qemu/`
+            `sudo cp {bios-256k.bin,efi-e1000.rom,efi-e1000e.rom,vgabios-qxl.bin,vgabios-stdvga.bin,efi-virtio.rom} /usr/share/qemu/`
             `sudo apt-get install libsndio7.0`
             `qemu-system-x86_64 --version`
             `qemu-system-x86_64`
