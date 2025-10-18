@@ -1,7 +1,7 @@
 #
 #!/bin/bash
 
-pacman -Sy --noconfirm quilt base-devel git cmake make meson pyvenv pycotap sphinx Ninja
+pacman -Sy --noconfirm quilt base-devel git cmake make meson
 ls
 df -h
 git clone git://git.proxmox.com/git/pve-qemu.git
