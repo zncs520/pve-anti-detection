@@ -31,7 +31,7 @@ jobs:
         run: |
           uname -a
           pacman -Sy --noconfirm bc dosfstools iasl mtools nasm \
-          python3 xorriso curl
+          python3 xorriso curl quilt base-devel git cmake make meson pyvenv pycotap sphinx Ninja
 
       # Step 3: 构建 deb 文件
       - name: 3-Build
