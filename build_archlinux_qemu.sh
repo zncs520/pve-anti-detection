@@ -1,7 +1,7 @@
 #
 #!/bin/bash
 
-pacman -Sy --noconfirm quilt make
+pacman -Sy --noconfirm quilt base-devel git cmake make
 ls
 df -h
 git clone git://git.proxmox.com/git/pve-qemu.git
