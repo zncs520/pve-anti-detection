@@ -1,4 +1,4 @@
-name: 4.Build archlinux qemu anti detection binary
+name: 4.Build ArchLinux qemu anti detection binary
 
 on:
   push:
@@ -76,10 +76,10 @@ jobs:
         id: create_release
         uses: actions/create-release@v1
         with:
-          tag_name: ${{ format('v{0}-debian', steps.current-time.outputs.formattedTime) }}
-          release_name: ${{ format('v10.x build-{0} for debian13', steps.current-time.outputs.formattedTime) }}
+          tag_name: ${{ format('v{0}-ArchLinux', steps.current-time.outputs.formattedTime) }}
+          release_name: ${{ format('v10.x build-{0} for ArchLinux25', steps.current-time.outputs.formattedTime) }}
           body: |
-            build Archlinux qemu form v10.1 to v10.x.
+            build ArchLinux qemu form v10.1 to v10.x.
             support UEFI and Seabios,Virtual Machine Manager BIOS is UEFI better!
             `pacman -S virt-manager seabios ovmf qemu libvirt virt-viewer bridge-utils dnsmasq`
             `sudo systemctl enable libvirtd.service`
