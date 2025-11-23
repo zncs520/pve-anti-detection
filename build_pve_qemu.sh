@@ -13,12 +13,12 @@ cp ../sedPatch-pve-qemu-kvm7-8-anti-dection.sh qemu/
 cd qemu
 meson subprojects download
 chmod +x sedPatch-pve-qemu-kvm7-8-anti-dection.sh
-bash sedPatch-pve-qemu-kvm7-8-anti-dection.sh
+##bash sedPatch-pve-qemu-kvm7-8-anti-dection.sh
 cp ../../smbios.h include/hw/firmware/smbios.h
 cp ../../smbios.c hw/smbios/smbios.c
 cp ../../bootsplash.jpg pc-bios/bootsplash.jpg # modify seabios bootsplash.jpg
-sed -i "s/vgabios.bin/vgabios.bin',\n\t'bootsplash.jpg/g" pc-bios/meson.build # modify seabios bootsplash.jpg
-sed -i 's/current_machine->boot_config.splash;/"\/usr\/share\/kvm\/bootsplash.jpg";/g' hw/nvram/fw_cfg.c # modify seabios bootsplash.jpg
+##sed -i "s/vgabios.bin/vgabios.bin',\n\t'bootsplash.jpg/g" pc-bios/meson.build # modify seabios bootsplash.jpg
+##sed -i 's/current_machine->boot_config.splash;/"\/usr\/share\/kvm\/bootsplash.jpg";/g' hw/nvram/fw_cfg.c # modify seabios bootsplash.jpg
 sed -i 's/!object_dynamic_cast/object_dynamic_cast/g' hw/vfio/igd.c
 
 #bash ../../1plus.sh   		# 1plus modidy cpu P-core+E-core
@@ -27,7 +27,7 @@ sed -i 's/!object_dynamic_cast/object_dynamic_cast/g' hw/vfio/igd.c
 
 #bash ../../3StrongStart.sh 	# 3StrongStart.sh q35 virtIO and roms
 
-git diff --submodule=diff > qemu-autoGenPatch.patch
+##git diff --submodule=diff > qemu-autoGenPatch.patch
 cp qemu-autoGenPatch.patch ../
 
 #bash ../../3StrongEnd.sh 		# 3StrongEnd.sh
